@@ -1,0 +1,11 @@
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\bin\Debug\DeskApp.exe.config
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\bin\Debug\DeskApp.exe
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\bin\Debug\DeskApp.pdb
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.csprojAssemblyReference.cache
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.Form1.resources
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.Properties.Resources.resources
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.Registracija.resources
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.csproj.GenerateResource.cache
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.csproj.CoreCompileInputs.cache
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.exe
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.pdb

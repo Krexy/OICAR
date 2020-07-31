@@ -1,0 +1,10 @@
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\bin\Release\DeskApp.exe.config
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\bin\Release\DeskApp.exe
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\bin\Release\DeskApp.pdb
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Release\DeskApp.Form1.resources
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Release\DeskApp.Properties.Resources.resources
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Release\DeskApp.Registracija.resources
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Release\DeskApp.csproj.GenerateResource.cache
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Release\DeskApp.csproj.CoreCompileInputs.cache
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Release\DeskApp.exe
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Release\DeskApp.pdb

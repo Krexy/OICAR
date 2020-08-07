@@ -7,13 +7,8 @@
 <link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
-    <input id="Text1" type="text" />
-
-    <input id="Text2" type="text" />
-
-    <input id="Submit1" type="submit" value="submit" />
 
     <div class="imgcontainer">
         <img src="img_avatar2.png" alt="Avatar" class="avatar">
@@ -21,29 +16,27 @@
 
     <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="text" placeholder="Enter Username" name="username" required>
 
 
+        
+        <label for="Pass"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="Pass" required>
 
-        <input id="Button1" type="button" value="button" />
 
         <button type="submit">Login</button>
-
+        <button type="button" onclick="location.href='@Url.Action("Registration","Login")'">Register</button>
 
         <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
+
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
         <button type="button" class="cancelbtn">Cancel</button>
         <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
-
-
 
 }
 

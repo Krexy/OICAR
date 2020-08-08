@@ -24,45 +24,51 @@ namespace WebApp.Controllers
         {
             //user se spaja preko name taga
             System.Diagnostics.Debug.WriteLine(user.Username);
-            System.Diagnostics.Debug.WriteLine(user.Pass);
+            System.Diagnostics.Debug.WriteLine(user.Password);
 
-            MemoryStream ms = new MemoryStream();
-            XmlWriter writer = XmlWriter.Create(ms);
+            WebApiApplication.restorani = WebApiApplication.BackendPostWithReturn<Login,List<RestaurantModel>>(user, WebApiApplication.URL_LOGIN_PATH);
 
-            DataContractSerializer serializer = new DataContractSerializer(typeof(Login));
-            serializer.WriteObject(writer, user);
-            writer.Close();
+            RestaurantModel restaurant1 = new RestaurantModel("drugi", "nema", "neka hrana", "neka vina", 2.3, "neki link");
+            RestaurantModel restaurant2 = new RestaurantModel("treci", "nema", "neka hrana", "neka vina", 4.3, "neki link");
+            RestaurantModel restaurant3 = new RestaurantModel("cetvrti", "nema", "neka hrana", "neka vina", 1.6, "neki link");
+            RestaurantModel restaurant4 = new RestaurantModel("peti", "nema", "neka hrana", "neka vina", 4.7, "neki link");
+            WebApiApplication.restorani.Add(restaurant1);
+            WebApiApplication.restorani.Add(restaurant2);
+            WebApiApplication.restorani.Add(restaurant3);
+            WebApiApplication.restorani.Add(restaurant4);
+            //MemoryStream ms = new MemoryStream();
+            //XmlWriter writer = XmlWriter.Create(ms);
 
-            byte[] data = Encoding.UTF8.GetBytes(Encoding.UTF8.GetString(ms.ToArray()));
+            //DataContractSerializer serializer = new DataContractSerializer(typeof(Login));
+            //serializer.WriteObject(writer, user);
+            //writer.Close();
 
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://fineoicar.azurewebsites.net/api/restaurant/web/login");
-            req.Method = "POST";
-            req.Accept = "application/xml";
-            req.ContentType = "application/xml";
+            //byte[] data = Encoding.UTF8.GetBytes(Encoding.UTF8.GetString(ms.ToArray()));
 
-            Stream reqStream = req.GetRequestStream();
-            reqStream.Write(data, 0, data.Length);
+            //HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://fineoicar.azurewebsites.net/api/restaurant/web/login");
+            //req.Method = "POST";
+            //req.Accept = "application/xml";
+            //req.ContentType = "application/xml";
 
-            HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-            Stream respStream = resp.GetResponseStream();
+            //Stream reqStream = req.GetRequestStream();
+            //reqStream.Write(data, 0, data.Length);
 
-            DataContractSerializer serializer2 = new DataContractSerializer(typeof(List<RestaurantModel>));
-            List<RestaurantModel> restorani = (List<RestaurantModel>)serializer2.ReadObject(respStream);
+            //HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+            //Stream respStream = resp.GetResponseStream();
 
-            foreach (RestaurantModel r in restorani)
+            //DataContractSerializer serializer2 = new DataContractSerializer(typeof(List<RestaurantModel>));
+            //List<RestaurantModel> restorani = (List<RestaurantModel>)serializer2.ReadObject(respStream);
+
+            foreach (RestaurantModel r in WebApiApplication.restorani)
             {
                 System.Diagnostics.Debug.WriteLine("Ime = " + r.RestaurantName);
                 System.Diagnostics.Debug.WriteLine("Ocjena = " + r.Grade);
 
-
             }
 
-            System.Diagnostics.Debug.WriteLine("Server = " + resp.Server);
-            System.Diagnostics.Debug.WriteLine("Status Code = " + resp.StatusCode);
-            System.Diagnostics.Debug.WriteLine("Headers = " + resp.Headers);
-            System.Diagnostics.Debug.WriteLine("Resp = " + resp.ToString());
-
+            WebApiApplication.LOGED_IN = true;
             return RedirectToAction("Index", "Home");
+
         }
 
         public ActionResult Registration()

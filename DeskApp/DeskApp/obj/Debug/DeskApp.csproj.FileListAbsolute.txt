@@ -9,3 +9,4 @@ C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.csproj.Ge
 C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.csproj.CoreCompileInputs.cache
 C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.exe
 C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.pdb
+C:\Users\Kresica\Desktop\OICAR\OICAR\DeskApp\DeskApp\obj\Debug\DeskApp.RestaurantOverview.resources

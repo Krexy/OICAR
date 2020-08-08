@@ -18,7 +18,9 @@
                 </button>
                 @Html.ActionLink("FINE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            @Html.ActionLink("Odjava", "Index", "Login", new { area = "" }, new { @class = "navbar-brand navbar-right" })
+            <input id="btnSignOut" type="button" value="Odjava" class="navbar-brand navbar-right" onclick="location.href='@Url.Action("SignOut","Home")'"/>
+            @*@Html.ActionLink("Odjava", "Index", "Login", new { area = "" }, new { @class = "navbar-brand navbar-right" })*@
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
@@ -39,5 +41,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+  
 </body>
 </html>

@@ -18,7 +18,6 @@ namespace DeskApp
 {
     public partial class Registracija : Form
     {
-        private const string URLPATH = "api/restaurant/desktop/insert";
 
         public Registracija()
         {
@@ -30,7 +29,7 @@ namespace DeskApp
             //Register();
             RestaurantOwner owner = new RestaurantOwner(tbUserName.Text, tbPass.Text,
                                     new RestaurantModel(tbRestaurantName.Text, tbRestaurantDetails.Text, "nema hrane", "nema vina", 4.3, "nema slike"));
-            Program.BackendConnect<RestaurantOwner>(owner, URLPATH);
+            Program.BackendConnect<RestaurantOwner>(owner, Program.URL_REGISTRATION_PATH);
             this.Close();
             Program.previousForm.Show();
         }

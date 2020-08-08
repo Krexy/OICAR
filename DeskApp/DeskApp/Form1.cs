@@ -17,7 +17,6 @@ namespace DeskApp
 {
     public partial class Form1 : Form
     {
-        private const string URLPATH = "api/restaurant/desktop/login";
 
         public Form1()
         {
@@ -36,11 +35,12 @@ namespace DeskApp
         {
             //Login();
             Login login = new Login(tbLoginUsername.Text, tbLoginPass.Text);
-            RestaurantOwner owner = Program.BackendConnectWithReturn<Login, RestaurantOwner>(login, URLPATH);
-            System.Diagnostics.Debug.WriteLine("Ime = " + owner.Username);
-            System.Diagnostics.Debug.WriteLine("Ocjena = " + owner.Restaurant.Grade);
+            Program.CurrentResturantOwner = Program.BackendConnectWithReturn<Login, RestaurantOwner>(login, Program.URL_LOGIN_PATH);
 
-            this.Close();
+            //MessageBox.Show("Ime = " + owner.Username);
+            //MessageBox.Show("Ime = " + owner.Restaurant.Grade);
+            this.Hide();
+            Program.previousForm = this;
             RestaurantOverview restaurantOverview = new RestaurantOverview();
             restaurantOverview.Show();
 
@@ -71,16 +71,8 @@ namespace DeskApp
         //    Stream respStream = resp.GetResponseStream();
 
         //    DataContractSerializer serializer2 = new DataContractSerializer(typeof(RestaurantOwner));
-        //    RestaurantOwner owner = (RestaurantOwner)serializer2.ReadObject(respStream);
+        //    Program.CurrentResturantOwner = (RestaurantOwner)serializer2.ReadObject(respStream);
 
-            
-        //        System.Diagnostics.Debug.WriteLine("Ime = " + owner.Username);
-        //        System.Diagnostics.Debug.WriteLine("Ocjena = " + owner.Restaurant.Grade);
-
-
-        //    System.Diagnostics.Debug.WriteLine("Server = " + resp.Server);
-        //    System.Diagnostics.Debug.WriteLine("Status Code = " + resp.StatusCode);
-        //    System.Diagnostics.Debug.WriteLine("Headers = " + resp.Headers);
         //}
     }
 }

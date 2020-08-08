@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeskApp.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace DeskApp
     static class Program
     {
         public static Form previousForm;
+        public static RestaurantOwner CurrentResturantOwner;
+        public static string URL_LOGIN_PATH = "api/restaurant/desktop/login";
+        public static string URL_REGISTRATION_PATH = "api/restaurant/desktop/insert";
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

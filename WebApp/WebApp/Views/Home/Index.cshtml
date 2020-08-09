@@ -1,41 +1,42 @@
 ﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="~/Content/RestaurantOverview.css" rel="stylesheet" type="text/css" />
 
-@foreach (WebApp.Models.RestaurantModel r in WebApiApplication.restorani)
+@foreach (WebApp.Models.RestaurantModel r in WebApiApplication.filteredRestaurants)
 {
     <div class="col-md-4">
-        <div class="jumbotron">
-            <div class="row">
-                @Html.Label(r.RestaurantName, htmlAttributes: new { @class = "form-control text-center" })
-                @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "form-control text-center" })
-                @Html.Label(r.Food, htmlAttributes: new { @class = "form-control text-center" })
-                @Html.Label(r.Wine, htmlAttributes: new { @class = "form-control text-center" })
-                @{int intPart = (int)r.Grade; int DecimalPart = (int)((r.Grade - intPart) * 10); int counter = 5;}
-                @Html.Label("Ocjena:", htmlAttributes: new { @class = "form-control text-center" })
-                @while (counter > 0)
-                {
-                    while (intPart > 0)
+        <a href="@Url.Action("RestaurantDetails","Home",new { name = r.RestaurantName})" style="text-decoration:none;">
+            <div class="jumbotron">
+                <div class="row">
+                    @Html.Label(r.RestaurantName, htmlAttributes: new { @class = "form-control text-center" })
+                    @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "form-control text-center" })
+                    @Html.Label(r.Food, htmlAttributes: new { @class = "form-control text-center" })
+                    @Html.Label(r.Wine, htmlAttributes: new { @class = "form-control text-center" })
+                    @{int intPart = (int)r.Grade; int DecimalPart = (int)((r.Grade - intPart) * 10); int counter = 5;}
+                    @Html.Label("Ocjena:", htmlAttributes: new { @class = "form-control text-center" })
+                    @while (counter > 0)
                     {
-                        <i class="fa fa-star MyStar"></i>
-                        intPart--;
+                        while (intPart > 0)
+                        {
+                            <i class="fa fa-star MyStar"></i>
+                            intPart--;
+                            counter--;
+                        }
+
+                        if (DecimalPart >= 5)
+                        {
+                            <i class="fa fa-star-half-full MyStar"></i>
+                            DecimalPart = 0;
+
+                        }
+                        else
+                        {
+                            <i class="fa fa-star-o MyStar"></i>
+                        }
                         counter--;
                     }
-
-                    if (DecimalPart >= 5)
-                    {
-                        <i class="fa fa-star-half-full MyStar"></i>
-                        DecimalPart = 0;
-
-                    }
-                    else
-                    {
-                        <i class="fa fa-star-o MyStar"></i>
-                    }
-                    counter--;
-                }
+                </div>
             </div>
-        </div>
-
+        </a>
     </div>
 }
 

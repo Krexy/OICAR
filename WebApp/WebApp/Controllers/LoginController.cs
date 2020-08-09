@@ -17,54 +17,41 @@ namespace WebApp.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View("Login");
+            if (Response.Cookies["Username"].Value == null)
+            {
+                Response.Cookies["Username"].Value = String.Empty;
+                Response.Cookies["Password"].Value = String.Empty;
+            }
+                return View("Login");
         }
         [HttpPost]
-        public ActionResult Login(Login user)
+        public ActionResult Login(Login user,string checkbox)
         {
             //user se spaja preko name taga
             System.Diagnostics.Debug.WriteLine(user.Username);
             System.Diagnostics.Debug.WriteLine(user.Password);
 
-            WebApiApplication.restorani = WebApiApplication.BackendPostWithReturn<Login,List<RestaurantModel>>(user, WebApiApplication.URL_LOGIN_PATH);
+            WebApiApplication.restaurants = WebApiApplication.BackendPostWithReturn<Login,List<RestaurantModel>>(user, WebApiApplication.URL_LOGIN_PATH);
 
             RestaurantModel restaurant1 = new RestaurantModel("drugi", "nema", "neka hrana", "neka vina", 2.3, "neki link");
             RestaurantModel restaurant2 = new RestaurantModel("treci", "nema", "neka hrana", "neka vina", 4.3, "neki link");
             RestaurantModel restaurant3 = new RestaurantModel("cetvrti", "nema", "neka hrana", "neka vina", 1.6, "neki link");
             RestaurantModel restaurant4 = new RestaurantModel("peti", "nema", "neka hrana", "neka vina", 4.7, "neki link");
-            WebApiApplication.restorani.Add(restaurant1);
-            WebApiApplication.restorani.Add(restaurant2);
-            WebApiApplication.restorani.Add(restaurant3);
-            WebApiApplication.restorani.Add(restaurant4);
-            //MemoryStream ms = new MemoryStream();
-            //XmlWriter writer = XmlWriter.Create(ms);
+            WebApiApplication.restaurants.Add(restaurant1);
+            WebApiApplication.restaurants.Add(restaurant2);
+            WebApiApplication.restaurants.Add(restaurant3);
+            WebApiApplication.restaurants.Add(restaurant4);
 
-            //DataContractSerializer serializer = new DataContractSerializer(typeof(Login));
-            //serializer.WriteObject(writer, user);
-            //writer.Close();
+            WebApiApplication.filteredRestaurants = WebApiApplication.restaurants;
 
-            //byte[] data = Encoding.UTF8.GetBytes(Encoding.UTF8.GetString(ms.ToArray()));
-
-            //HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://fineoicar.azurewebsites.net/api/restaurant/web/login");
-            //req.Method = "POST";
-            //req.Accept = "application/xml";
-            //req.ContentType = "application/xml";
-
-            //Stream reqStream = req.GetRequestStream();
-            //reqStream.Write(data, 0, data.Length);
-
-            //HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-            //Stream respStream = resp.GetResponseStream();
-
-            //DataContractSerializer serializer2 = new DataContractSerializer(typeof(List<RestaurantModel>));
-            //List<RestaurantModel> restorani = (List<RestaurantModel>)serializer2.ReadObject(respStream);
-
-            foreach (RestaurantModel r in WebApiApplication.restorani)
+            if (checkbox == "on")
             {
-                System.Diagnostics.Debug.WriteLine("Ime = " + r.RestaurantName);
-                System.Diagnostics.Debug.WriteLine("Ocjena = " + r.Grade);
-
+                Response.Cookies.Add(new HttpCookie("Username", user.Username));
+                Response.Cookies.Add(new HttpCookie("Password", user.Password));
+                Response.Cookies["Username"].Expires = DateTime.Now.AddMinutes(5);
+                Response.Cookies["Password"].Expires = DateTime.Now.AddMinutes(5);
             }
+
 
             WebApiApplication.LOGED_IN = true;
             return RedirectToAction("Index", "Home");

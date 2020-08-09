@@ -18,15 +18,32 @@
                 </button>
                 @Html.ActionLink("FINE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <input id="btnSignOut" type="button" value="Odjava" class="navbar-brand navbar-right" onclick="location.href='@Url.Action("SignOut","Home")'"/>
-            @*@Html.ActionLink("Odjava", "Index", "Login", new { area = "" }, new { @class = "navbar-brand navbar-right" })*@
+            @using (Html.BeginForm("FilterRestaurants", "Home", FormMethod.Post, new { id = "filterForm"
+            }))
+            {
+            <input id="autoCompInput" placeholder="Filter Restaurants..." value="@Response.Cookies["Filter"].Value.ToString()" type="text" name="filter" class="navbar-brand" style="margin-left:25%;"/>
+            }
+            <script>
+                $("#autoCompInput").bind("keypress", {}, keypressInBox);
 
-            <div class="navbar-collapse collapse">
+                function keypressInBox(e) {
+                    var code = (e.keyCode ? e.keyCode : e.which);
+                    if (code == 13) { //Enter keycode
+                        e.preventDefault();
+
+                        $("filterForm").submit();
+                    }
+                };
+            </script>
+
+            @Html.ActionLink("Odjava", "SignOut", "Home", new { area = "" }, new { @class = "navbar-brand navbar-right" })
+
+            @*<div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
-            </div>
+            </div>*@
         </div>
 
     </div>
@@ -41,6 +58,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-  
+
 </body>
 </html>

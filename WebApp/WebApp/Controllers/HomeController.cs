@@ -14,10 +14,14 @@ namespace WebApp.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
+            if (Response.Cookies["Filter"].Value == null)
+            {
+                Response.Cookies["Filter"].Value = String.Empty;
+                Response.Cookies["Filter"].Value = String.Empty;
+            }
             if (WebApiApplication.LOGED_IN)
             {
                 return View();
-
             }
             else
             {
@@ -25,10 +29,27 @@ namespace WebApp.Controllers
             }
         }
 
-        public ActionResult SignOut(object sender, EventArgs e)
+        public ActionResult SignOut()
         {
             WebApiApplication.LOGED_IN = false;
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Terms()
+        {
+            return View("Terms");
+        }
+
+        public ActionResult FilterRestaurants(string filter)
+        {
+            WebApiApplication.filteredRestaurants = WebApiApplication.restaurants.Where(r => r.RestaurantName.Contains(filter)).ToList();
+            Response.Cookies.Add(new HttpCookie("Filter", filter));
+            Response.Cookies["Filter"].Expires = DateTime.Now.AddMinutes(5);
+            return View("Index");
+        }
+        public ActionResult RestaurantDetails(string name)
+        {
+            return View("RestaurantDetails",WebApiApplication.restaurants.Where(r => r.RestaurantName == name).FirstOrDefault());
         }
     }
 }

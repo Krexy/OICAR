@@ -21,7 +21,8 @@ namespace WebApp
         public static string URL_PATH = "api/restaurant/web";
         public static string URL_LOGIN_PATH = "api/restaurant/web/login";
         public static string URL_REGISTRATION_PATH = "api/restaurant/web/reg";
-        public static List<RestaurantModel> restorani;
+        public static List<RestaurantModel> restaurants;
+        public static List<RestaurantModel> filteredRestaurants;
 
         protected void Application_Start()
         {
@@ -52,16 +53,26 @@ namespace WebApp
             Stream reqStream = req.GetRequestStream();
             reqStream.Write(data, 0, data.Length);
 
+            //try
+            //{
+                
+
+            //}
+            //catch (Exception e)
+            //{
+
+            //    return new MemoryStream();
+            //}
             HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
             Stream respStream = resp.GetResponseStream();
-
             return respStream;
+
         }
 
         public static X BackendPostWithReturn<T, X>(T model, string urlPath)
         {
             Stream respStream = BackendPost<T>(model, urlPath);
-
+            
             DataContractSerializer serializer2 = new DataContractSerializer(typeof(X));
             X returnObject = (X)serializer2.ReadObject(respStream);
 

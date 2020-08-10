@@ -1,63 +1,51 @@
-﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="~/Content/RestaurantOverview.css" rel="stylesheet" type="text/css" />
-
-@foreach (WebApp.Models.RestaurantModel r in WebApiApplication.filteredRestaurants)
-{
-    <div class="col-md-4">
-        <a href="@Url.Action("RestaurantDetails","Home",new { name = r.RestaurantName})" style="text-decoration:none;">
-            <div class="jumbotron">
-                <div class="row">
-                    @Html.Label(r.RestaurantName, htmlAttributes: new { @class = "form-control text-center" })
-                    @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "form-control text-center" })
-                    @Html.Label(r.Food, htmlAttributes: new { @class = "form-control text-center" })
-                    @Html.Label(r.Wine, htmlAttributes: new { @class = "form-control text-center" })
-                    @{int intPart = (int)r.Grade; int DecimalPart = (int)((r.Grade - intPart) * 10); int counter = 5;}
-                    @Html.Label("Ocjena:", htmlAttributes: new { @class = "form-control text-center" })
-                    @while (counter > 0)
-                    {
-                        while (intPart > 0)
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/RestaurantOverview.css" rel="stylesheet" type="text/css" />
+    <title>FINE</title>
+</head>
+<body>
+    @foreach (WebApp.Models.RestaurantModel r in WebApiApplication.filteredRestaurants)
+    {
+        <div class="col-md-4" >
+            <a href="@Url.Action("RestaurantDetails","Home",new { name = r.RestaurantName})" style="text-decoration:none; overflow:hidden;">
+                <div id="slide" class="jumbotron" >
+                    <div class="row">
+                        @Html.Label(r.RestaurantName, htmlAttributes: new { @class = "form-control text-center" })
+                        @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "form-control text-center" })
+                        @Html.Label(r.Food, htmlAttributes: new { @class = "form-control text-center" })
+                        @Html.Label(r.Wine, htmlAttributes: new { @class = "form-control text-center" })
+                        @{int intPart = (int)r.Grade; int DecimalPart = (int)((r.Grade - intPart) * 10); int counter = 5;}
+                        @Html.Label("Ocjena:", htmlAttributes: new { @class = "form-control text-center" })
+                        @while (counter > 0)
                         {
-                            <i class="fa fa-star MyStar"></i>
-                            intPart--;
+                            while (intPart > 0)
+                            {
+                                <i class="fa fa-star MyStar"></i>
+                                intPart--;
+                                counter--;
+                            }
+
+                            if (DecimalPart >= 5)
+                            {
+                                <i class="fa fa-star-half-full MyStar"></i>
+                                DecimalPart = 0;
+
+                            }
+                            else
+                            {
+                                <i class="fa fa-star-o MyStar"></i>
+                            }
                             counter--;
                         }
-
-                        if (DecimalPart >= 5)
-                        {
-                            <i class="fa fa-star-half-full MyStar"></i>
-                            DecimalPart = 0;
-
-                        }
-                        else
-                        {
-                            <i class="fa fa-star-o MyStar"></i>
-                        }
-                        counter--;
-                    }
+                    </div>
                 </div>
-            </div>
-        </a>
-    </div>
-}
+            </a>
+        </div>
+    }
+</body>
+</html>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-            a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-            is an ideal platform for building RESTful applications on the .NET Framework.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+

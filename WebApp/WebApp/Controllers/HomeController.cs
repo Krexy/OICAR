@@ -13,7 +13,7 @@ namespace WebApp.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "FINE";
             if (Response.Cookies["Filter"].Value == null)
             {
                 Response.Cookies["Filter"].Value = String.Empty;
@@ -47,9 +47,17 @@ namespace WebApp.Controllers
             Response.Cookies["Filter"].Expires = DateTime.Now.AddMinutes(5);
             return View("Index");
         }
+
         public ActionResult RestaurantDetails(string name)
         {
-            return View("RestaurantDetails",WebApiApplication.restaurants.Where(r => r.RestaurantName == name).FirstOrDefault());
+            if (WebApiApplication.LOGED_IN)
+            {
+                return View("RestaurantDetails", WebApiApplication.restaurants.Where(r => r.RestaurantName == name).FirstOrDefault());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace WebApp
     public class WebApiApplication : System.Web.HttpApplication
     {
         public static bool LOGED_IN = false;
+        public static bool FIRST_VISIT = true;
         public static string URL_PATH = "api/restaurant/web";
         public static string URL_LOGIN_PATH = "api/restaurant/web/login";
         public static string URL_REGISTRATION_PATH = "api/restaurant/web/reg";
@@ -31,6 +32,33 @@ namespace WebApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+
+            //Response.Cookies.Add(new HttpCookie("Username", String.Empty));
+            //Response.Cookies.Add(new HttpCookie("Password", String.Empty));
+            //Response.Cookies["Username"].Expires = DateTime.Now.AddMinutes(5);
+            //Response.Cookies["Password"].Expires = DateTime.Now.AddMinutes(5);
+
+            //Response.Cookies.Add(new HttpCookie("English", "on"));
+            //Response.Cookies.Add(new HttpCookie("Croatian", "off"));
+            //Response.Cookies.Add(new HttpCookie("Toggle", "on"));
+            
+            Response.Cookies.Add(new HttpCookie("Language", "en"));
+
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["Language"];
+            if (cookie != null && cookie.Value != null)
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cookie.Value);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(cookie.Value);
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en");
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+            }
         }
 
         public static Stream BackendPost<T>(T model, string urlPath)

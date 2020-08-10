@@ -83,3 +83,8 @@ C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreC
 C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\obj\Debug\WebApp.Resources.DefaultLanguage.resources
+C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\obj\Debug\WebApp.csproj.GenerateResource.cache
+C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\bin\hr\WebApp.resources.dll
+C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\obj\Debug\WebApp.Resources.DefaultLanguage.hr.resources
+C:\Users\Kresica\Desktop\OICAR\OICAR\WebApp\WebApp\obj\Debug\hr\WebApp.resources.dll

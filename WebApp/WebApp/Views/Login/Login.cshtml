@@ -1,40 +1,56 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Login";
     Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
+    <title>@WebApp.Resources.DefaultLanguage.LoginPage</title>
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
 
-<link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
+        <div class="imgcontainer">
+            <img src="https://www.amadriapark.com/hr/wp-content/uploads/sites/4/2018/08/ta-restaurant-camellia-1.jpg" alt="Avatar" class="avatar">
+        </div>
 
-
-@using (Html.BeginForm("Login", "Login", FormMethod.Post))
-{
-
-    <div class="imgcontainer">
-        <img src="https://www.amadriapark.com/hr/wp-content/uploads/sites/4/2018/08/ta-restaurant-camellia-1.jpg" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container" style=" width: 50%; margin-left: auto; margin-right: auto;">
-
-
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username"  value="@Request.Cookies["Username"].Value.ToString()" name="Username" required>
-
-
-        <label for="Pass"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" value="@Request.Cookies["Password"].Value.ToString()" name="Password" required>
+        <div class="container" style=" width: 50%; margin-left: auto; margin-right: auto;">
 
 
-        <button type="submit">Login</button>
-        <button type="button" onclick="location.href='@Url.Action("Registration","Login")'">Register</button>
+            <label for="uname"><b>@WebApp.Resources.DefaultLanguage.Username</b></label>
+            <input type="text" placeholder="@WebApp.Resources.DefaultLanguage.InputName" value="@Request.Cookies["Username"].Value.ToString()" name="Username" required>
 
-        <label>
-            <input type="checkbox" checked="checked" name="checkbox"> Remember me
-        </label>
 
-    </div>
+            <label for="Pass"><b>@WebApp.Resources.DefaultLanguage.Password</b></label>
+            <input type="password" placeholder="@WebApp.Resources.DefaultLanguage.InputPassword" value="@Request.Cookies["Password"].Value.ToString()" name="Password" required>
 
-}
+
+            <button type="submit">@WebApp.Resources.DefaultLanguage.Login</button>
+            <button type="button" onclick="location.href='@Url.Action("Registration","Login")'">@WebApp.Resources.DefaultLanguage.Register</button>
+
+            <label>
+                <input type="checkbox" checked="checked" name="checkbox"> @WebApp.Resources.DefaultLanguage.RememberMe
+            </label>
+
+            <hr />
+
+
+        </div>
+
+    }
+
+    @RenderPage("~/Views/Shared/Language.cshtml")
+
+</body>
+
+</html>
+
+
+
+
 
 
 

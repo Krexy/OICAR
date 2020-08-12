@@ -15,9 +15,9 @@
                     <div class="row">
                         @Html.Label(r.RestaurantName, htmlAttributes: new { @class = "form-control text-center" })
                         @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "form-control text-center" })
-                        @Html.Label(r.Food, htmlAttributes: new { @class = "form-control text-center" })
-                        @Html.Label(r.Wine, htmlAttributes: new { @class = "form-control text-center" })
-                        @{int intPart = (int)r.Grade; int DecimalPart = (int)((r.Grade - intPart) * 10); int counter = 5;}
+                        @Html.Label(r.Food[0].Name, htmlAttributes: new { @class = "form-control text-center" })
+                        @Html.Label(r.Wine[0].Name, htmlAttributes: new { @class = "form-control text-center" })
+                        @{int intPart = (int)r.Grade.One; int DecimalPart = (int)((r.Grade.One - intPart) * 10); int counter = 5;}
                         @Html.Label("Ocjena:", htmlAttributes: new { @class = "form-control text-center" })
                         @while (counter > 0)
                         {

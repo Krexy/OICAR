@@ -1,6 +1,7 @@
 ﻿using DeskApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -39,6 +40,7 @@ namespace DeskApp
 
             DataContractSerializer serializer = new DataContractSerializer(typeof(T));
             serializer.WriteObject(writer, model);
+            Console.WriteLine(serializer.ToString());
             writer.Close();
 
             byte[] data = Encoding.UTF8.GetBytes(Encoding.UTF8.GetString(ms.ToArray()));

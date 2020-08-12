@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -26,9 +27,18 @@ namespace DeskApp
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            List<Food> hrana = new List<Food>();
+            hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku"));
+            List<Wine> vina = new List<Wine>();
+            vina.Add(new Wine("vino", new GradeSpread(1, 2, 3, 4, 5), 3.2, "vino nema sliku"));
             //Register();
             RestaurantOwner owner = new RestaurantOwner(tbUserName.Text, tbPass.Text,
-                                    new RestaurantModel(tbRestaurantName.Text, tbRestaurantDetails.Text, "nema hrane", "nema vina", 4.3, "nema slike"));
+                                    new RestaurantModel(tbRestaurantName.Text, tbRestaurantDetails.Text, 
+                                    hrana, 
+                                    vina, 
+                                    new GradeSpread(1,2,3,4,5), "restoran nema slike"));
+            //System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(owner.GetType());
+            //x.Serialize(Console.Out, owner);
             Program.BackendConnect<RestaurantOwner>(owner, Program.URL_REGISTRATION_PATH);
             this.Close();
             Program.previousForm.Show();

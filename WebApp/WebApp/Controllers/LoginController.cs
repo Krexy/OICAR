@@ -41,14 +41,19 @@ namespace WebApp.Controllers
 
             WebApiApplication.restaurants = WebApiApplication.BackendPostWithReturn<Login, List<RestaurantModel>>(user, WebApiApplication.URL_LOGIN_PATH);
 
-            RestaurantModel restaurant1 = new RestaurantModel("drugi", "nema", "neka hrana", "neka vina", 2.3, "neki link");
-            RestaurantModel restaurant2 = new RestaurantModel("treci", "nema", "neka hrana", "neka vina", 4.3, "neki link");
-            RestaurantModel restaurant3 = new RestaurantModel("cetvrti", "nema", "neka hrana", "neka vina", 1.6, "neki link");
-            RestaurantModel restaurant4 = new RestaurantModel("peti", "nema", "neka hrana", "neka vina", 4.7, "neki link");
-            RestaurantModel restaurant5 = new RestaurantModel("peti", "nema", "neka hrana", "neka vina", 4.7, "neki link");
-            RestaurantModel restaurant6 = new RestaurantModel("peti", "nema", "neka hrana", "neka vina", 4.7, "neki link");
-            RestaurantModel restaurant7 = new RestaurantModel("peti", "nema", "neka hrana", "neka vina", 4.7, "neki link");
-            RestaurantModel restaurant8 = new RestaurantModel("peti", "nema", "neka hrana", "neka vina", 4.7, "neki link");
+            List<Food> hrana = new List<Food>();
+            hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku"));
+            List<Wine> vina = new List<Wine>();
+            vina.Add(new Wine("vino", new GradeSpread(1, 2, 3, 4, 5), 3.2, "vino nema sliku"));
+
+            RestaurantModel restaurant1 = new RestaurantModel("drugi", "nema", hrana, vina, new GradeSpread(1, 2, 3, 4, 5), "neki link");
+            RestaurantModel restaurant2 = new RestaurantModel("treci", "nema", hrana, vina, new GradeSpread(1, 2, 3, 4, 5), "neki link");
+            RestaurantModel restaurant3 = new RestaurantModel("cetvrti", "nema",hrana,vina, new GradeSpread(1, 2, 3, 4, 5), "neki link");
+            RestaurantModel restaurant4 = new RestaurantModel("drugi", "nema", hrana, vina, new GradeSpread(1, 2, 3, 4, 5), "neki link");
+            RestaurantModel restaurant5 = new RestaurantModel("drugi", "nema", hrana, vina, new GradeSpread(1, 2, 3, 4, 5), "neki link");
+            RestaurantModel restaurant6 = new RestaurantModel("drugi", "nema", hrana, vina, new GradeSpread(1, 2, 3, 4, 5), "neki link");
+            RestaurantModel restaurant7 = new RestaurantModel("drugi", "nema", hrana, vina, new GradeSpread(1, 2, 3, 4, 5), "neki link");
+            RestaurantModel restaurant8 = new RestaurantModel("drugi", "nema", hrana, vina, new GradeSpread(1, 2, 3, 4, 5), "neki link");
             WebApiApplication.restaurants.Add(restaurant1);
             WebApiApplication.restaurants.Add(restaurant2);
             WebApiApplication.restaurants.Add(restaurant3);

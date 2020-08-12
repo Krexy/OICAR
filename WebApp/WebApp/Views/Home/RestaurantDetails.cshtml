@@ -1,0 +1,29 @@
+﻿@model WebApp.Models.RestaurantModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/Rating.css" rel="stylesheet" type="text/css" />
+    <title>@WebApp.Resources.DefaultLanguage.RestaurantDetails</title>
+</head>
+<body>
+    <div>
+        <h1>@WebApp.Resources.DefaultLanguage.RestaurantDetails</h1>
+        @Html.DisplayFor(m => m, new { @class = "form-control text-center" })
+        @*@Html.DisplayFor(m => m.RestaurantName, new { @class = "form-control text-center" })
+        @Html.DisplayFor(m => m.RestaurantDetails, new { @class = "form-control text-center" })
+        @Html.DisplayFor(m => m.Food[0], new { @class = "form-control text-center" })
+        @Html.DisplayFor(m => m.Wine[0], new { @class = "form-control text-center" })
+        @Html.DisplayFor(m => m.Grade.One, new { @class = "form-control text-center" })*@
+    </div>
+    @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
+    <a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>
+</body>
+</html>

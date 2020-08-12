@@ -17,25 +17,25 @@ namespace WebApp.Models
         public string RestaurantDetails { get; set; }
 
         [DataMember(Order = 2)]
-        public String Food { get; set; }
+        public List<Food> Food { get; set; }
 
         [DataMember(Order = 3)]
-        public String Wine { get; set; }
+        public List<Wine> Wine { get; set; }
 
         [DataMember(Order = 4)]
-        public double Grade { get; set; }
+        public string Image { get; set; }
 
         [DataMember(Order = 5)]
-        public String Image { get; set; }
+        public GradeSpread Grade { get; set; }
 
-        public RestaurantModel(string name, string details,string food, string wina, double grade, string img)
+        public RestaurantModel(string name, string details, List<Food> food, List<Wine> wina, GradeSpread grade, string img)
         {
             RestaurantName = name;
             RestaurantDetails = details;
             Food = food;
             Wine = wina;
-            Grade = grade;
             Image = img;
+            Grade = grade;
         }
 
         public RestaurantModel()

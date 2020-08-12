@@ -1,0 +1,34 @@
+﻿@Scripts.Render("~/bundles/jquery")
+
+@{
+    Layout = null;
+}
+<link href="~/Content/Language.css" rel="stylesheet" type="text/css" />
+
+@using (Html.BeginForm("Language", "Login", FormMethod.Post, new { id = "LanguageForm" }))
+{
+
+    <div style="align-content:center; position:absolute; left:45%;">
+
+        <img src="~/Content/Images/hr-flag.png"
+             @if (Request.Cookies["Croatian"].Value.ToString() == "off") { <text> style="opacity: 0.3;" </text> }
+             @if (Request.Cookies["Croatian"].Value.ToString() == "on") { <text> style="opacity: 1;" </text> } />
+
+        <label class="switch" style="position:relative; top: -35px;">
+            <input id="cbLanguage" type="checkbox" name="option" @if (Request.Cookies["Toggle"].Value.ToString() == "on") { <text> checked</text>}>
+            <span class="slider round"></span>
+        </label>
+
+        <img src="~/Content/Images/en-flag.png"
+             @if (Request.Cookies["English"].Value.ToString() == "off") { <text> style="opacity: 0.3;" </text> }
+             @if (Request.Cookies["English"].Value.ToString() == "on") { <text> style="opacity: 1;" </text> } />
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#cbLanguage').change(function () {
+                $("#LanguageForm").submit();
+            });
+        });
+    </script>
+}

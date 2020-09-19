@@ -13,6 +13,7 @@ namespace WebApp.Controllers
     {
         public ActionResult Index()
         {
+
             ViewBag.Title = "FINE";
             if (Response.Cookies["Filter"].Value == null)
             {

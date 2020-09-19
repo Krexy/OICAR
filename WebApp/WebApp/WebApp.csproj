@@ -138,6 +138,7 @@
     <Compile Include="Models\GradeSpread.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\RestaurantModel.cs" />
+    <Compile Include="Models\RestaurantUserCombo.cs" />
     <Compile Include="Models\WebUser.cs" />
     <Compile Include="Models\Wine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

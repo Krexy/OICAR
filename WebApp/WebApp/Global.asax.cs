@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -102,10 +103,31 @@ namespace WebApp
             Stream respStream = BackendPost<T>(model, urlPath);
             
             DataContractSerializer serializer2 = new DataContractSerializer(typeof(X));
+            
             X returnObject = (X)serializer2.ReadObject(respStream);
 
             return returnObject;
         }
+
+        public static void BackendPostWithReturnTest<T, X>(T model1,string urlPath)
+        {
+            MemoryStream ms = new MemoryStream();
+            XmlWriter writer = XmlWriter.Create(ms);
+
+            DataContractSerializer serializer = new DataContractSerializer(typeof(T));
+            serializer.WriteObject(writer, model1);
+            writer.Close();
+
+            //XmlWriterSettings settings = new XmlWriterSettings();
+            //settings.Indent = true;
+            //settings.IndentChars = ("\t");
+            //settings.OmitXmlDeclaration = true;
+            //System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(model1.GetType());
+            //x.Serialize(XmlWriter.Create(urlPath,settings), model1);
+
+
+        }
+
         public static X BackendGetRestaurantData<T, X>(string restaurantName, string data)
         {
 

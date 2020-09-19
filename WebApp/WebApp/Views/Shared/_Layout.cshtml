@@ -8,6 +8,7 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,7 +26,7 @@
                 id = "filterForm"
             }))
             {
-                <input id="autoCompInput" placeholder="@WebApp.Resources.DefaultLanguage.FilterRestaurants" value="@Response.Cookies["Filter"].Value.ToString()" type="text" name="filter" class="navbar-brand" style="position:relative; margin-left:30%;" />
+                <input id="autoCompInput" placeholder="@WebApp.Resources.DefaultLanguage.FilterRestaurants" value="@Response.Cookies["Filter"].Value.ToString()" type="text" name="filter" class="navbar-brand" style="position:relative; margin-left:34%;" />
             }
             <script>
                 $(document).ready(function () {

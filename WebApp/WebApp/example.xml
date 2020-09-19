@@ -1,0 +1,47 @@
+﻿<RestaurantUserCombo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<RestaurantModel>
+		<RestaurantName>TestRestaurant</RestaurantName>
+		<RestaurantDetails>nema</RestaurantDetails>
+		<Food>
+			<Food>
+				<Name>hrana</Name>
+				<Grade>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>hrana nema sliku</Image>
+			</Food>
+		</Food>
+		<Wine>
+			<Wine>
+				<Name>vino</Name>
+				<Grade>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>vino nema sliku</Image>
+			</Wine>
+		</Wine>
+		<Image>neki link</Image>
+		<Grade>
+			<One>1</One>
+			<Two>2</Two>
+			<Three>3</Three>
+			<Four>4</Four>
+			<Five>5</Five>
+		</Grade>
+	</RestaurantModel>
+	<WebUser>
+		<Username>testUser</Username>
+		<Pass>123</Pass>
+		<Email>email</Email>
+	</WebUser>
+</RestaurantUserCombo>

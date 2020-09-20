@@ -9,8 +9,10 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
+    [System.Web.Http.Authorize]
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
 
@@ -51,6 +53,7 @@ namespace WebApp.Controllers
 
         public ActionResult RestaurantDetails(string name)
         {
+
             if (WebApiApplication.LOGED_IN)
             {
                 return View("RestaurantDetails", WebApiApplication.restaurants.Where(r => r.RestaurantName == name).FirstOrDefault());

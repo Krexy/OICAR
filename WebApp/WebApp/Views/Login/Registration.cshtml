@@ -7,33 +7,40 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
     <title>@WebApp.Resources.DefaultLanguage.RegistrationPage</title>
 </head>
-<body>
+<body style="background-color: #303030;">
     @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
     {
-        <div class="container" style=" width: 50%; margin-left: auto; margin-right: auto;">
-            <h1>@WebApp.Resources.DefaultLanguage.Register</h1>
-            <p>@WebApp.Resources.DefaultLanguage.RegInfo</p>
-            <hr>
+    <div class="container jumbotron" style=" width: 50%; margin-left: auto; margin-right: auto;">
+        <h1>@WebApp.Resources.DefaultLanguage.Register</h1>
+        <p>@WebApp.Resources.DefaultLanguage.RegInfo</p>
+        <hr>
 
-            <label for="userName"><b>@WebApp.Resources.DefaultLanguage.Username</b></label>
-            <input type="text" placeholder="@WebApp.Resources.DefaultLanguage.InputName" name="userName" id="userName" required>
+        <label for="userName"><b>@WebApp.Resources.DefaultLanguage.Username</b></label>
+        <input type="text" placeholder="@WebApp.Resources.DefaultLanguage.InputName" name="userName" id="userName" required>
 
-            <label for="email"><b>@WebApp.Resources.DefaultLanguage.Email</b></label>
-            <input type="text" placeholder="@WebApp.Resources.DefaultLanguage.InputEmail" name="email" id="email" required>
+        <label for="email"><b>@WebApp.Resources.DefaultLanguage.Email</b></label>
+        <input type="text" placeholder="@WebApp.Resources.DefaultLanguage.InputEmail" name="email" id="email" required>
 
-            <label for="pass"><b>@WebApp.Resources.DefaultLanguage.Password</b></label>
-            <input type="password" placeholder="@WebApp.Resources.DefaultLanguage.InputPassword" name="pass" id="pass" required>
+        <label for="pass"><b>@WebApp.Resources.DefaultLanguage.Password</b></label>
+        <input type="password" placeholder="@WebApp.Resources.DefaultLanguage.InputPassword" name="pass" id="pass" required>
 
-            <label for="psw-repeat"><b>@WebApp.Resources.DefaultLanguage.RepeatPassword</b></label>
-            <input type="password" placeholder="@WebApp.Resources.DefaultLanguage.InputPassword" name="psw-repeat" id="psw-repeat" required>
-            <hr>
-            <p>@WebApp.Resources.DefaultLanguage.TermsInfo @Html.ActionLink(WebApp.Resources.DefaultLanguage.TermsLink, "Terms", "Home", new { area = "" }, new { @class = "navbar-brand navbar-right" }).</p>
+        <label for="psw-repeat"><b>@WebApp.Resources.DefaultLanguage.RepeatPassword</b></label>
+        <input type="password" placeholder="@WebApp.Resources.DefaultLanguage.InputPassword" name="psw-repeat" id="psw-repeat" required>
+        <hr>
+        <p>@WebApp.Resources.DefaultLanguage.TermsInfo @Html.ActionLink(WebApp.Resources.DefaultLanguage.TermsLink, "Terms", "Home", new { area = "" }, new { @class = "" }).</p>
 
-            <button type="submit" class="registerbtn">@WebApp.Resources.DefaultLanguage.Register</button>
-            <button type="button" class="cancelbtn" style=" width: 100%;" onclick="location.href='@Url.Action("Index","Login")'">@WebApp.Resources.DefaultLanguage.CancelBtn</button>
-        </div>
+        <button type="submit" class="registerbtn btn btn-success">@WebApp.Resources.DefaultLanguage.Register</button>
+        <br />
+        <br />
+        <button type="button" class="cancelbtn btn btn-danger" style=" width: 100%;" onclick="location.href='@Url.Action("Index","Login")'">@WebApp.Resources.DefaultLanguage.CancelBtn</button>
+
+        <hr />
+    </div>
     }
     @RenderPage("~/Views/Shared/Language.cshtml")
 

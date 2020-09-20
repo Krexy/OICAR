@@ -133,7 +133,7 @@ namespace WebApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My ASP.NET Application.
+        ///   Looks up a localized string similar to OICAR.
         /// </summary>
         public static string MyApp {
             get {

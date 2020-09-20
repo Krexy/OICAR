@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -7,52 +11,51 @@
     @Styles.Render("~/Content/css")
     <title>FINE</title>
 </head>
-<body style="background-image: url(https://images.unsplash.com/photo-1514214460829-5f081763862a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
-    background-size:cover;min-height:100vh;background-position:center center;">
+<body class="RestaurantBG">
     @foreach (WebApp.Models.RestaurantModel r in WebApiApplication.filteredRestaurants)
     {
         <div class="col-md-4">
-            <a href="@Url.Action("RestaurantDetails","Home",new { name = r.RestaurantName})" style="text-decoration:none; overflow:hidden; cursor: pointer;">
-                <div id="slide" class="jumbotron" style="background-color: #282828;">
+            <a href="@Url.Action("RestaurantDetails","Home",new { name = r.RestaurantName})" class="RestaurantCard">
+                <div id="slide" class="jumbotron" style="background-color: #3e3e3eba;">
                     <div class="row" style="text-align:center;">
                         @*style="justify-content:center;text-align:center;align-content:center;"*@
-                        <label style="color: orange; font-size: 2.5em; font-weight: 800; font-family: Segoe Script; font-style: oblique;">@r.RestaurantName</label>
-                            @*@Html.Label(r.RestaurantName, htmlAttributes: new { @class = "text-center" })*@
-                            <img  src="@r.Image" alt="" asp-append-version="true" style="max-width: 100%;max-height: 100%;border-radius: 50%;" />
-                            <br />
-                            <br />
-                            <br />
-                            @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "form-control text-center" })
-                            @*@Html.Label(r.Food[0].Name, htmlAttributes: new { @class = "form-control text-center" })
-                                @Html.Label(r.Wine[0].Name, htmlAttributes: new { @class = "form-control text-center" })*@
-                            @{int intPart = (int)r.Grade.One; int DecimalPart = (int)((r.Grade.One - intPart) * 10); int counter = 5;}
-                            @Html.Label("Ocjena:", htmlAttributes: new { @class = "form-control text-center" })
-                            @while (counter > 0)
+                        <label class="RestaurantTitle">@r.RestaurantName</label>
+                        @*@Html.Label(r.RestaurantName, htmlAttributes: new { @class = "text-center" })*@
+                        <img src="@r.Image" alt="" asp-append-version="true" class="RestaurantImage"/>
+                        <br />
+                        <br />
+                        <br />
+                        @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "form-control text-center" })
+                        @*@Html.Label(r.Food[0].Name, htmlAttributes: new { @class = "form-control text-center" })
+                            @Html.Label(r.Wine[0].Name, htmlAttributes: new { @class = "form-control text-center" })*@
+                        @{int intPart = (int)r.Grade.One; int DecimalPart = (int)((r.Grade.One - intPart) * 10); int counter = 5;}
+                        @Html.Label("Ocjena:", htmlAttributes: new { @class = "form-control text-center" })
+                        @while (counter > 0)
+                        {
+                            while (intPart > 0)
                             {
-                                while (intPart > 0)
-                                {
-                                    <i class="fa fa-star MyStar"></i>
-                                    intPart--;
-                                    counter--;
-                                }
-
-                                if (DecimalPart >= 5)
-                                {
-                                    <i class="fa fa-star-half-full MyStar"></i>
-                                    DecimalPart = 0;
-
-                                }
-                                else
-                                {
-                                    <i class="fa fa-star-o MyStar"></i>
-                                }
+                                <i class="fa fa-star MyStar"></i>
+                                intPart--;
                                 counter--;
                             }
-                        </div>
+
+                            if (DecimalPart >= 5)
+                            {
+                                <i class="fa fa-star-half-full MyStar"></i>
+                                DecimalPart = 0;
+
+                            }
+                            else
+                            {
+                                <i class="fa fa-star-o MyStar"></i>
+                            }
+                            counter--;
+                        }
                     </div>
-                </a>
-            </div>
-        }
+                </div>
+            </a>
+        </div>
+    }
 </body>
 </html>
 

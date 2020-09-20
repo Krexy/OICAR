@@ -14,7 +14,7 @@
              @if (Request.Cookies["Croatian"].Value.ToString() == "off") { <text> style="opacity: 0.3;" </text> }
              @if (Request.Cookies["Croatian"].Value.ToString() == "on") { <text> style="opacity: 1;" </text> } />
 
-        <label class="switch" style="position:relative; top: -35px;">
+        <label class="switch" style="position:relative; top: -10px;">
             <input id="cbLanguage" type="checkbox" name="option" @if (Request.Cookies["Toggle"].Value.ToString() == "on") { <text> checked</text>}>
             <span class="slider round"></span>
         </label>

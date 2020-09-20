@@ -34,13 +34,25 @@ namespace WebApp.Controllers
             }
             return View("Login");
         }
+
         //[HttpPost]
         public ActionResult Login(Login user, string checkbox)
         {
+
+
             //user se spaja preko name taga
 
             //WebApiApplication.restaurants = WebApiApplication.BackendPostWithReturn<Login, List<RestaurantModel>>(user, WebApiApplication.URL_LOGIN_PATH);
             WebApiApplication.restaurants = new List<RestaurantModel>();
+
+            //Store the products to a session         
+            Session["username"] = user.Username;
+
+            //To get what you have stored to a session
+            string currentUser = Session["username"] as String;
+
+
+
             List<Food> hrana = new List<Food>();
             hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku"));
             List<Wine> vina = new List<Wine>();

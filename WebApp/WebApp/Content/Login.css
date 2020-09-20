@@ -1,6 +1,6 @@
 ﻿/* Bordered form */
 form {
-    border: 3px solid #f1f1f1;
+    /*border: 3px solid #f1f1f1;*/
 }
 
 /* Full-width inputs */
@@ -44,8 +44,10 @@ button {
 
 /* Avatar image */
 img.avatar {
-    width: 40%;
+    /*text-shadow: 2px 2px 5px red;*/
+    width: 30%;
     border-radius: 50%;
+    box-shadow: 10px 5px 15px orange;
 }
 
 /* Add padding to containers */
@@ -57,6 +59,12 @@ img.avatar {
 span.psw {
     float: right;
     padding-top: 16px;
+}
+
+.jumbotron {
+    border-bottom-left-radius:15%;
+    border-top-right-radius:15%;
+    /*border-radius:1.5%!important;*/
 }
 
 

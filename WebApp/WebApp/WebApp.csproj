@@ -160,6 +160,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\en-flag.png" />
+    <Content Include="Content\Images\FINE-logo.png" />
     <Content Include="Content\Images\hr-flag.png" />
     <Content Include="Content\Language.css" />
     <Content Include="Content\Login.css" />

@@ -24,12 +24,24 @@
     max-width: 100%;
     max-height: 100%;
     border-radius: 50%;
+    border: 1px solid #ffa50091;
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2), 0 16px 20px 0 rgba(0, 0, 0, 1);
 }
 
 .RestaurantCard {
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+}
+#slide {
+    box-shadow: inset 5px 7px 10px rgba(255, 255, 255, 0.83), /*bottom external highlight*/
+    inset -10px -5px 5px rgba(102, 102, 102, 0.29), /*top external shadow*/
+    0 10px 18px 0 rgba(0, 0, 0, 0.2), 20px 16px 20px 0 rgba(0, 0, 0, 1);
+}
+
+#slide.jumbotron {
+    border-bottom-left-radius: 15%;
+    border-top-right-radius: 15%;
 }
 
 /*.MyStar:after {

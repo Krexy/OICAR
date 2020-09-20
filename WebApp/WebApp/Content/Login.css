@@ -44,10 +44,20 @@ button {
 
 /* Avatar image */
 img.avatar {
+    position:relative;
     /*text-shadow: 2px 2px 5px red;*/
-    width: 30%;
+    width: 25%;
     border-radius: 50%;
-    box-shadow: 10px 5px 15px orange;
+    /*box-shadow: 10px 5px 15px orange;*/
+    border: 1px solid #ffa50091;
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2), 0 16px 20px 0 rgba(0, 0, 0, 1);
+    bottom:-20px;
+}
+
+img#Logo {
+    position: absolute;
+    top: 17%;
+    left: 40%;
 }
 
 /* Add padding to containers */
@@ -62,8 +72,11 @@ span.psw {
 }
 
 .jumbotron {
-    border-bottom-left-radius:15%;
-    border-top-right-radius:15%;
+    border-bottom-left-radius: 15%;
+    border-top-right-radius: 15%;
+    box-shadow: inset 10px 15px 5px #fff, /*bottom external highlight*/
+    inset -10px -5px 5px #666, /*top external shadow*/
+    0 10px 18px 0 rgba(0, 0, 0, 0.2), 20px 16px 20px 0 rgba(0, 0, 0, 1);
     /*border-radius:1.5%!important;*/
 }
 

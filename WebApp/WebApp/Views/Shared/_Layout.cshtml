@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("FINE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("FINE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand ", style = "color:orange;" })
             </div>
             @using (Html.BeginForm("FilterRestaurants", "Home", FormMethod.Post, new
             {
@@ -60,18 +60,17 @@
         <br />
         <br />
         @RenderBody()
-        <hr />
+        <br />
         <br />
 
     </div>
-    <footer @*id="myFooter"*@ style="justify-content:center;text-align:center; color:white;">
-        @*@RenderPage("~/Views/Shared/Language.cshtml")*@
+    @*<footer style="justify-content:center;text-align:center; color:white;">
         <br />
         <p>
             &copy; @DateTime.Now.ToShortDateString() -
             @WebApp.Resources.DefaultLanguage.MyApp
         </p>
-    </footer>
+    </footer>*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

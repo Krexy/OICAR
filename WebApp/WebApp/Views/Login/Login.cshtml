@@ -17,13 +17,15 @@
 
     <title>@WebApp.Resources.DefaultLanguage.LoginPage</title>
 </head>
-<body style="background-color: #303030;"> 
+<body style="background-color: #303030;">
     @using (Html.BeginForm("Login", "Login", FormMethod.Post))
     {
-    <div class="imgcontainer">
-        <img src="https://www.amadriapark.com/hr/wp-content/uploads/sites/4/2018/08/ta-restaurant-camellia-1.jpg" alt="Avatar" class="avatar">
+        <div class="imgcontainer">
+            @*<img src="https://www.amadriapark.com/hr/wp-content/uploads/sites/4/2018/08/ta-restaurant-camellia-1.jpg" alt="Avatar" class="avatar">*@
+            <img src="~/Content/Images/FINE-background.jpg" alt="Avatar" class="avatar">
+            <img  id="Logo" src="~/Content/Images/FINE-logo.png"  />
+        </div>
 
-    </div>
 
         <div class="container jumbotron" style=" width: 25%; margin-left: auto; margin-right: auto;">
 

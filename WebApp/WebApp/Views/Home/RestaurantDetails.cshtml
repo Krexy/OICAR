@@ -1,7 +1,7 @@
 ﻿@model WebApp.Models.RestaurantModel
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -14,16 +14,36 @@
     <title>@WebApp.Resources.DefaultLanguage.RestaurantDetails</title>
 </head>
 <body>
+    @using (Html.BeginForm("UpdateGrade", "Home", new { RestaurantName = Model.RestaurantName}, FormMethod.Post,null))
+    {
+
     <div>
         <h1>@WebApp.Resources.DefaultLanguage.RestaurantDetails</h1>
         @Html.DisplayFor(m => m, new { @class = "form-control text-center" })
+        @Html.DisplayFor(m => m.Grade, new { @class = "form-control text-center" })
+
+        @foreach (var food in Model.Food)
+        {
+            @Html.DisplayFor(m => food, new { @class = "form-control text-center" })
+        }
+
+        @foreach (var wine in Model.Wine)
+        {
+            @Html.DisplayFor(m => wine, new { @class = "form-control text-center" })
+
+        }
+
+
         @*@Html.DisplayFor(m => m.RestaurantName, new { @class = "form-control text-center" })
         @Html.DisplayFor(m => m.RestaurantDetails, new { @class = "form-control text-center" })
         @Html.DisplayFor(m => m.Food[0], new { @class = "form-control text-center" })
         @Html.DisplayFor(m => m.Wine[0], new { @class = "form-control text-center" })
         @Html.DisplayFor(m => m.Grade.One, new { @class = "form-control text-center" })*@
     </div>
-    @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
-    <a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>
+        @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
+        @*<a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>*@
+        <input id="Button1" type="button" value="Go Back" onclick="location.href='@Url.Action("Index","Home")'" />
+        <button class="btn btn-success" id="btnLogin" type="submit">Submit Grade</button>
+    }
 </body>
 </html>

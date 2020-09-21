@@ -12,16 +12,44 @@
     <title>FINE</title>
 </head>
 <body class="RestaurantBG">
+    <div style="margin-bottom:40px; padding-bottom:30px;">
+        @using (Html.BeginForm("FilterRestaurants", "Home", FormMethod.Post, new
+        {
+            id = "filterForm"
+        }))
+        {
+            <input id="autoCompInput" placeholder='@WebApp.Resources.DefaultLanguage.FilterRestaurants' value="@Response.Cookies["Filter"].Value.ToString()" type="text" name="filter" class="navbar-brand form-control" style="position:relative; margin-left:39%;" />
+        }
+        <script>
+            $(document).ready(function () {
+                $("#autoCompInput").bind("keypress", {}, keypressInBox);
+
+                function keypressInBox(e) {
+                    var code = (e.keyCode ? e.keyCode : e.which);
+                    if (code == 13) { //Enter keycode
+                        e.preventDefault();
+
+                        $("filterForm").submit();
+                    }
+                };
+            });
+        </script>
+    </div>
+
+
+    @*<br />
+    <br />
+    <br />*@
     @foreach (WebApp.Models.RestaurantModel r in WebApiApplication.filteredRestaurants)
     {
-        <div class="col-md-4">
+        <div id="divLogin" class="col-md-4">
             <a href="@Url.Action("RestaurantDetails","Home",new { name = r.RestaurantName})" class="RestaurantCard">
                 <div id="slide" class="jumbotron" style="background-color: #3e3e3eba;">
                     <div class="row" style="text-align:center;">
                         @*style="justify-content:center;text-align:center;align-content:center;"*@
-                        <label class="RestaurantTitle">@r.RestaurantName</label>
+                        <label id="lblTitle" class="RestaurantTitle">@r.RestaurantName</label>
                         @*@Html.Label(r.RestaurantName, htmlAttributes: new { @class = "text-center" })*@
-                        <img src="@r.Image" alt="" asp-append-version="true" class="RestaurantImage"/>
+                        <img src="@r.Image" alt="" asp-append-version="true" class="RestaurantImage" />
                         <br />
                         <br />
                         <br />

@@ -54,19 +54,19 @@ namespace WebApp.Controllers
 
 
             List<Food> hrana = new List<Food>();
-            hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku"));
+            hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku",1));
             List<Wine> vina = new List<Wine>();
-            vina.Add(new Wine("vino", new GradeSpread(1, 2, 3, 4, 5), 3.2, "vino nema sliku"));
+            vina.Add(new Wine("vino", new GradeSpread(1, 2, 3, 4, 5), 3.2, "vino nema sliku",2));
             GradeSpread gradeSpread = new GradeSpread(1, 2, 3, 4, 5);
 
-            RestaurantModel restaurant1 = new RestaurantModel("drugi sadfa", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg");
-            RestaurantModel restaurant2 = new RestaurantModel("treci", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg");
-            RestaurantModel restaurant3 = new RestaurantModel("cetvrti","nema",hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg");
-            RestaurantModel restaurant4 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg");
-            RestaurantModel restaurant5 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg");
-            RestaurantModel restaurant6 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg");
-            RestaurantModel restaurant7 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg");
-            RestaurantModel restaurant8 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg");
+            RestaurantModel restaurant1 = new RestaurantModel("drugi sadfa", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",3);
+            RestaurantModel restaurant2 = new RestaurantModel("treci", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",4);
+            RestaurantModel restaurant3 = new RestaurantModel("cetvrti","nema",hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",5);
+            RestaurantModel restaurant4 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",6);
+            RestaurantModel restaurant5 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",7);
+            RestaurantModel restaurant6 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",8);
+            RestaurantModel restaurant7 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",9);
+            RestaurantModel restaurant8 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",10);
             WebApiApplication.restaurants.Add(restaurant1);
             WebApiApplication.restaurants.Add(restaurant2);
             WebApiApplication.restaurants.Add(restaurant3);
@@ -97,17 +97,6 @@ namespace WebApp.Controllers
 
         public ActionResult Registration()
         {
-            List<Food> hrana = new List<Food>();
-            hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku"));
-            List<Wine> vina = new List<Wine>();
-            vina.Add(new Wine("vino", new GradeSpread(1, 2, 3, 4, 5), 3.2, "vino nema sliku"));
-            GradeSpread gradeSpread = new GradeSpread(1, 2, 3, 4, 5);
-            RestaurantModel restaurant = new RestaurantModel("TestRestaurant", "nema", hrana, vina, gradeSpread, "neki link");
-            WebUser user = new WebUser("testUser", "123", "email");
-            RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = restaurant, WebUser = user };
-            string path = ControllerContext.HttpContext.Server.MapPath("~/example.xml");
-
-            WebApiApplication.BackendPostWithReturnTest<RestaurantUserCombo, List<RestaurantModel>>(restaurantUserCombo, path);
 
             return View("Registration");
         }

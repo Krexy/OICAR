@@ -21,7 +21,7 @@
                 </button>
                 @Html.ActionLink("FINE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand ", style = "color:orange;" })
             </div>
-            @using (Html.BeginForm("FilterRestaurants", "Home", FormMethod.Post, new
+            @*@using (Html.BeginForm("FilterRestaurants", "Home", FormMethod.Post, new
             {
                 id = "filterForm"
             }))
@@ -41,7 +41,7 @@
                         }
                     };
                 });
-            </script>
+            </script>*@
 
             @*@RenderPage("~/Views/Shared/Language.cshtml")*@
 
@@ -57,7 +57,6 @@
 
     </div>
     <div class="container body-content">
-        <br />
         <br />
         @RenderBody()
         <br />

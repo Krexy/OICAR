@@ -17,12 +17,15 @@ namespace WebApp.Models
         public double Price { get; set; }
         [DataMember(Order = 4)]
         public string Image { get; set; }
-        public Wine(string name, GradeSpread spread, double price, string image)
+        [DataMember(Order = 5)]
+        public int VID { get; set; }
+        public Wine(string name, GradeSpread spread, double price, string image,int vid)
         {
             Name = name;
             Grade = spread;
             Price = price;
             Image = image;
+            VID = vid;
         }
         public Wine()
         {

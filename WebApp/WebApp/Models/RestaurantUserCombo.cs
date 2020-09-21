@@ -9,6 +9,6 @@ namespace WebApp.Models
     {
         public RestaurantModel RestaurantModel { get; set; }
 
-        public WebUser WebUser { get; set; }
+        public String WebUser { get; set; }
     }
 }

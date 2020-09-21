@@ -54,7 +54,7 @@ namespace WebApp.Controllers
         public ActionResult RestaurantDetails(string name)
         {
 
-            if (WebApiApplication.LOGED_IN)
+            if (WebApiApplication.LOGED_IN && name != null)
             {
                 return View("RestaurantDetails", WebApiApplication.restaurants.Where(r => r.RestaurantName == name).FirstOrDefault());
             }
@@ -62,6 +62,26 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+        }
+
+        public ActionResult UpdateGrade(string RestaurantName) {
+
+            string currentUser = Session["username"] as String;
+            RestaurantModel model = WebApiApplication.restaurants.Where(r => r.RestaurantName == RestaurantName).FirstOrDefault();
+
+            //List<Food> hrana = new List<Food>();
+            //hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku"));
+            //List<Wine> vina = new List<Wine>();
+            //vina.Add(new Wine("vino", new GradeSpread(1, 2, 3, 4, 5), 3.2, "vino nema sliku"));
+            //GradeSpread gradeSpread = new GradeSpread(1, 2, 3, 4, 5);
+            //RestaurantModel restaurant = new RestaurantModel("TestRestaurant", "nema", hrana, vina, gradeSpread, "neki link");
+            //WebUser user = new WebUser("testUser", "123", "email");
+            RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser = currentUser };
+            string path = ControllerContext.HttpContext.Server.MapPath("~/example.xml");
+
+            WebApiApplication.BackendPostWithReturnTest<RestaurantUserCombo, List<RestaurantModel>>(restaurantUserCombo, path);
+
+            return View("RestaurantDetails",model);
         }
     }
 }

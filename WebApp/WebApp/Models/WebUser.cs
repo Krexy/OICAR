@@ -15,12 +15,15 @@ namespace WebApp.Models
         public string Pass { get; set; }
         [DataMember(Order = 2)]
         public string Email { get; set; }
+        [DataMember(Order = 3)]
+        public List<int> VID { get; set; }
 
-        public WebUser(string username, string pass, string email)
+        public WebUser(string username, string pass, string email, List<int> vid)
         {
             Username = username;
             Pass = pass;
             Email = email;
+            VID = vid;
         }
 
         public WebUser()

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -69,16 +70,16 @@ namespace WebApp.Controllers
 
         public ActionResult UpdateGrade(string RestaurantName)
         {
-
-
-            List<GradeSpread> FGradeSpread = GetGradeSpread("cbf");
-            List<GradeSpread> WGradeSpread = GetGradeSpread("cbw");
-
-
-
-
             string currentUser = Session["username"] as String;
             RestaurantModel model = WebApiApplication.restaurants.Where(r => r.RestaurantName == RestaurantName).FirstOrDefault();
+
+
+            List<GradeSpread> FGradeSpread = GetGradeSpread("cbf", model);
+            List<GradeSpread> WGradeSpread = GetGradeSpread("cbw", model);
+
+
+
+
 
             RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser = currentUser };
             string path = ControllerContext.HttpContext.Server.MapPath("~/example.xml");
@@ -88,17 +89,52 @@ namespace WebApp.Controllers
             return View("RestaurantDetails", model);
         }
 
-        private List<GradeSpread> GetGradeSpread(string clue)
+        private List<GradeSpread> GetGradeSpread(string clue, RestaurantModel model)
         {
             List<GradeSpread> finalGradeSpreads = new List<GradeSpread>();
-            string checkedCheckBoxes = Request.Form[clue];
-            //string checkedCheckBoxes = Request.Form[clue + "0"];
-            //string checkedCheckBoxes1 = Request.Form[clue+"1"];
-            //string checkedCheckBoxes2 = Request.Form[clue + "2"];
-            //string checkedCheckBoxes3 = Request.Form[clue + "3"];
-            //string checkedCheckBoxes4 = Request.Form[clue + "4"];
-            //string[] splitcb = checkedCheckBoxes.Split(',');
-            List<string> splitcb = checkedCheckBoxes.Split(',').ToList();
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            int postfix = 1;
+            if (clue == "cbf")
+            {
+                //umjesto 4 napisi listu hrane iz restorana
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        stringBuilder.Append(Request.Form[clue + i.ToString() + postfix.ToString()]);
+                        if (!(i == 3 && j == 4))
+                        {
+                            stringBuilder.Append(",");
+                        }
+                        postfix++;
+                    }
+                }
+            }
+            else
+            {
+                //umjesto 4 napisi listu vina iz restorana
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        stringBuilder.Append(Request.Form[clue + i.ToString() + postfix.ToString()]);
+                        if (!(i == 3 && j == 4))
+                        {
+                            stringBuilder.Append(",");
+
+                        }
+                        postfix++;
+                    }
+
+                }
+
+            }
+
+
+            //List<string> splitcb = checkedCheckBoxes.Split(',').ToList();
+            List<string> splitcb = stringBuilder.ToString().Split(',').ToList();
             List<string> fixedcb = new List<string>();
 
             bool switcher = true;
@@ -106,11 +142,11 @@ namespace WebApp.Controllers
             {
                 if (item == "true" && switcher)
                 {
-                    //splitcb.Remove(item);
                     fixedcb.Add(item);
                     switcher = false;
                 }
-                else if (item == "false" && !switcher) {
+                else if (item == "false" && !switcher)
+                {
                     switcher = true;
                 }
                 else
@@ -164,7 +200,7 @@ namespace WebApp.Controllers
                     i++;
                     step++;
                 }
-                i+=6-step;
+                i += 6 - step;
             }
 
             return finalGradeSpreads;

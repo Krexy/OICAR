@@ -159,6 +159,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\GradeSpread.css" />
     <Content Include="Content\Images\en-flag.png" />
     <Content Include="Content\Images\FINE-background.jpg" />
     <Content Include="Content\Images\FINE-logo.png" />

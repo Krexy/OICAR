@@ -74,10 +74,45 @@ namespace WebApp.Controllers
             RestaurantModel model = WebApiApplication.restaurants.Where(r => r.RestaurantName == RestaurantName).FirstOrDefault();
 
 
+            //StringBuilder stringBuilder = new StringBuilder();
+            //int postfix = 1;
+            //    //umjesto 4 napisi listu hrane iz restorana
+            //    for (int i = 0; i < 4; i++)
+            //    {
+            //        for (int j = 0; j < 5; j++)
+            //        {
+            //            stringBuilder.Append(Request.Form["cbf" + postfix.ToString()]);
+            //            if (!(i == 3 && j == 4))
+            //            {
+            //                stringBuilder.Append(",");
+            //            }
+            //            postfix++;
+            //        }
+            //    }
             List<GradeSpread> FGradeSpread = GetGradeSpread("cbf", model);
             List<GradeSpread> WGradeSpread = GetGradeSpread("cbw", model);
 
+            int Fcounter = 0;
+            foreach (var food in FGradeSpread)
+            {
+                model.Food[Fcounter].Grade.One += food.One; 
+                model.Food[Fcounter].Grade.Two += food.Two; 
+                model.Food[Fcounter].Grade.Three += food.Three; 
+                model.Food[Fcounter].Grade.Four += food.Four; 
+                model.Food[Fcounter].Grade.Five += food.Five;
+                Fcounter++;
+            }
 
+            int Wcounter = 0;
+            foreach (var wine in WGradeSpread)
+            {
+                model.Wine[Wcounter].Grade.One += wine.One;
+                model.Wine[Wcounter].Grade.Two += wine.Two;
+                model.Wine[Wcounter].Grade.Three += wine.Three;
+                model.Wine[Wcounter].Grade.Four += wine.Four;
+                model.Wine[Wcounter].Grade.Five += wine.Five;
+                Wcounter++;
+            }
 
 
 
@@ -95,38 +130,58 @@ namespace WebApp.Controllers
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            int postfix = 1;
+            int prefix = 1;
             if (clue == "cbf")
             {
                 //umjesto 4 napisi listu hrane iz restorana
-                for (int i = 0; i < 4; i++)
+                //for (int i = 0; i < 4; i++)
+                //{
+                //    for (int j = 0; j < 5; j++)
+                //    {
+                //        stringBuilder.Append(Request.Form[clue + i.ToString() + postfix.ToString()]);
+                //        if (!(i == 3 && j == 4))
+                //        {
+                //            stringBuilder.Append(",");
+                //        }
+                //        postfix++;
+                //    }
+                //}
+                for (int i = 0; i < model.Food.Count; i++)
                 {
-                    for (int j = 0; j < 5; j++)
+                    stringBuilder.Append(Request.Form[clue + prefix.ToString()]);
+                    if (!(i == model.Food.Count-1))
                     {
-                        stringBuilder.Append(Request.Form[clue + i.ToString() + postfix.ToString()]);
-                        if (!(i == 3 && j == 4))
-                        {
-                            stringBuilder.Append(",");
-                        }
-                        postfix++;
+                        stringBuilder.Append(",");
                     }
+                    prefix++;
+                    
                 }
             }
             else
             {
                 //umjesto 4 napisi listu vina iz restorana
-                for (int i = 0; i < 4; i++)
-                {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        stringBuilder.Append(Request.Form[clue + i.ToString() + postfix.ToString()]);
-                        if (!(i == 3 && j == 4))
-                        {
-                            stringBuilder.Append(",");
+                //for (int i = 0; i < 4; i++)
+                //{
+                //    for (int j = 0; j < 5; j++)
+                //    {
+                //        stringBuilder.Append(Request.Form[clue + i.ToString() + prefix.ToString()]);
+                //        if (!(i == 3 && j == 4))
+                //        {
+                //            stringBuilder.Append(",");
 
-                        }
-                        postfix++;
+                //        }
+                //        prefix++;
+                //    }
+
+                //}
+                for (int i = 0; i < model.Wine.Count; i++)
+                {
+                    stringBuilder.Append(Request.Form[clue + prefix.ToString()]);
+                    if (!(i == model.Wine.Count-1))
+                    {
+                        stringBuilder.Append(",");
                     }
+                    prefix++;
 
                 }
 
@@ -134,74 +189,105 @@ namespace WebApp.Controllers
 
 
             //List<string> splitcb = checkedCheckBoxes.Split(',').ToList();
-            List<string> splitcb = stringBuilder.ToString().Split(',').ToList();
-            List<string> fixedcb = new List<string>();
+            List<string> grades = stringBuilder.ToString().Split(',').ToList();
+            //List<string> fixedcb = new List<string>();
 
-            bool switcher = true;
-            foreach (var item in splitcb)
-            {
-                if (item == "true" && switcher)
-                {
-                    fixedcb.Add(item);
-                    switcher = false;
-                }
-                else if (item == "false" && !switcher)
-                {
-                    switcher = true;
-                }
-                else
-                {
-                    fixedcb.Add(item);
-                }
-
-            }
-
-
-            //splitcb = splitcb.Where(x => ).ToList();
-            for (int i = 0; i < fixedcb.Count;)
+            foreach (var grade in grades)
             {
                 GradeSpread gradeSpread = new GradeSpread() { One = 0, Two = 0, Three = 0, Four = 0, Five = 0 };
-                int innerCounter = 5;
-                int step = 1;
-                while (innerCounter > 0)
+                switch (grade)
                 {
-                    if (step == 5 && fixedcb[i] == "true")
-                    {
+                    case "One":
+                        gradeSpread.One = 1;
+                        finalGradeSpreads.Add(gradeSpread);
+                        break;
+                    case "Two":
+                        gradeSpread.Two = 1;
+                        finalGradeSpreads.Add(gradeSpread);
+                        break;
+                    case "Three":
+                        gradeSpread.Three = 1;
+                        finalGradeSpreads.Add(gradeSpread);
+                        break;
+                    case "Four":
+                        gradeSpread.Four = 1;
+                        finalGradeSpreads.Add(gradeSpread);
+                        break;
+                    case "Five":
                         gradeSpread.Five = 1;
                         finalGradeSpreads.Add(gradeSpread);
                         break;
-                    }
-                    if (fixedcb[i] == "false")
-                    {
-                        if (step % 5 == 0)
-                        {
-                            gradeSpread.Four = 1;
-                        }
-                        else if (step % 4 == 0)
-                        {
-                            gradeSpread.Three = 1;
-                        }
-                        else if (step % 3 == 0)
-                        {
-                            gradeSpread.Two = 1;
-                        }
-                        else if (step % 2 == 0)
-                        {
-                            gradeSpread.One = 1;
-                        }
-                        //else if (step % 1 == 0)
-                        //{
-                        //    gradeSpread.One = 1;
-                        //}
+                    default:
                         finalGradeSpreads.Add(gradeSpread);
                         break;
-                    }
-                    innerCounter--;
-                    i++;
-                    step++;
                 }
-                i += 6 - step;
+
             }
+
+            //bool switcher = true;
+            //foreach (var item in splitcb)
+            //{
+            //    if (item == "on" && switcher)   //true
+            //    {
+            //        fixedcb.Add(item);
+            //        switcher = false;
+            //    }
+            //    else if (item == "" && !switcher)  //false
+            //    {
+            //        switcher = true;
+            //    }
+            //    else
+            //    {
+            //        fixedcb.Add(item);
+            //    }
+
+            //}
+
+
+            //for (int i = 0; i < fixedcb.Count;)
+            //{
+            //    GradeSpread gradeSpread = new GradeSpread() { One = 0, Two = 0, Three = 0, Four = 0, Five = 0 };
+            //    int innerCounter = 5;
+            //    int step = 1;
+            //    while (innerCounter > 0)
+            //    {
+            //        if (step == 5 && fixedcb[i] == "true")
+            //        {
+            //            gradeSpread.Five = 1;
+            //            finalGradeSpreads.Add(gradeSpread);
+            //            break;
+            //        }
+            //        if (fixedcb[i] == "false")
+            //        {
+            //            if (step % 5 == 0)
+            //            {
+            //                gradeSpread.Four = 1;
+            //            }
+            //            else if (step % 4 == 0)
+            //            {
+            //                gradeSpread.Three = 1;
+            //            }
+            //            else if (step % 3 == 0)
+            //            {
+            //                gradeSpread.Two = 1;
+            //            }
+            //            else if (step % 2 == 0)
+            //            {
+            //                gradeSpread.One = 1;
+            //            }
+            //            //else if (step % 1 == 0)
+            //            //{
+            //            //    gradeSpread.One = 1;
+            //            //}
+            //            finalGradeSpreads.Add(gradeSpread);
+            //            break;
+            //        }
+            //        innerCounter--;
+            //        i++;
+            //        step++;
+            //    }
+            //    i += 6 - step;
+            //}
 
             return finalGradeSpreads;
         }

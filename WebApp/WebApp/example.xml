@@ -1,8 +1,21 @@
 ﻿<RestaurantUserCombo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<RestaurantModel>
-		<RestaurantName>drugi sadfa</RestaurantName>
+		<RestaurantName>treci</RestaurantName>
 		<RestaurantDetails>nema</RestaurantDetails>
 		<Food>
+			<Food>
+				<Name>hrana</Name>
+				<Grade>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>6</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>hrana nema sliku</Image>
+				<VID>11</VID>
+			</Food>
 			<Food>
 				<Name>hrana</Name>
 				<Grade>
@@ -14,7 +27,33 @@
 				</Grade>
 				<Price>3.2</Price>
 				<Image>hrana nema sliku</Image>
-				<VID>1</VID>
+				<VID>12</VID>
+			</Food>
+			<Food>
+				<Name>hrana</Name>
+				<Grade>
+					<One>2</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>hrana nema sliku</Image>
+				<VID>13</VID>
+			</Food>
+			<Food>
+				<Name>hrana</Name>
+				<Grade>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>5</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>hrana nema sliku</Image>
+				<VID>14</VID>
 			</Food>
 		</Food>
 		<Wine>
@@ -24,12 +63,51 @@
 					<One>1</One>
 					<Two>2</Two>
 					<Three>3</Three>
+					<Four>5</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>vino nema sliku</Image>
+				<VID>21</VID>
+			</Wine>
+			<Wine>
+				<Name>vino</Name>
+				<Grade>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>4</Three>
 					<Four>4</Four>
 					<Five>5</Five>
 				</Grade>
 				<Price>3.2</Price>
 				<Image>vino nema sliku</Image>
-				<VID>2</VID>
+				<VID>22</VID>
+			</Wine>
+			<Wine>
+				<Name>vino</Name>
+				<Grade>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>6</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>vino nema sliku</Image>
+				<VID>23</VID>
+			</Wine>
+			<Wine>
+				<Name>vino</Name>
+				<Grade>
+					<One>2</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>vino nema sliku</Image>
+				<VID>24</VID>
 			</Wine>
 		</Wine>
 		<Image>https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg</Image>
@@ -40,7 +118,7 @@
 			<Four>4</Four>
 			<Five>5</Five>
 		</Grade>
-		<VID>3</VID>
+		<VID>4</VID>
 	</RestaurantModel>
-	<WebUser>yolo</WebUser>
+	<WebUser>asdf</WebUser>
 </RestaurantUserCombo>

@@ -20,80 +20,103 @@
     @using (Html.BeginForm("UpdateGrade", "Home", new { RestaurantName = Model.RestaurantName }, FormMethod.Post, null))
     {
 
-        <div>
-            <h1>@WebApp.Resources.DefaultLanguage.RestaurantDetails</h1>
-            @Html.DisplayFor(m => m, new { @class = "form-control text-center" })
-            @Html.DisplayFor(m => m.Grade, new { @class = "form-control text-center" })
-            <h1>Jela</h1>
-            @{ int postfix = 1;}
-            @{ for (int i = 0; i < 4; i++)
+    <div>
+        <h1>@WebApp.Resources.DefaultLanguage.RestaurantDetails</h1>
+        @*@Html.DisplayFor(m => m, new { @class = "form-control text-center" })
+        @Html.DisplayFor(m => m.Grade, new { @class = "form-control text-center" })*@
+
+        <h1>Jela</h1>
+        @{ int postfix = 1;}
+        @{ int prefix = 1;}
+    <div class="container">
+        <div class="row">
+            @{ for (int i = 0; i < Model.Food.Count; i++)
                 {
+                    //if( WebApp.Models.WebUser.VID.Contains( contains  Model.Food[i].VID ))
+                        <div id="detailsCard" class="rating jumbotron col-lg-1">
+                            <span class="detailsTitle">@Model.Food[i].Name</span>
 
-                    //i % 2 != 0 || i == 0 ? true : false
-                        <div class="rating">
+                            <img src="@Model.Food[i].Image" class="foodImg" />
 
-                            @Html.CheckBox("cbf" + i.ToString() + postfix.ToString(), i % 2 != 0 || i == 0 ? true : false)
+                            @Html.RadioButton("cbf" + prefix.ToString(), "Five", false, new { id = "cbf" + i.ToString() + postfix.ToString() })
                             <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
-                            @Html.CheckBox("cbf" + i.ToString() + postfix.ToString(), i % 2 != 0 ? true : false)
-                            <label for='@String.Format("cbf{0}{1}",i.ToString(),postfix.ToString())'></label>
+
+                            @Html.RadioButton("cbf" + prefix.ToString(), "Four", new { id = "cbf" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
 
-                            @Html.CheckBox("cbf" + i.ToString() + postfix.ToString(), i % 2 != 0 ? true : false)
-                            <label for='@String.Format("cbf{0}{1}",i.ToString(),postfix.ToString())'></label>
+                            @Html.RadioButton("cbf" + prefix.ToString(), "Three", new { id = "cbf" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
 
-                            @Html.CheckBox("cbf" + i.ToString() + postfix.ToString(), i % 2 != 0 ? true : false)
-                            <label for='@String.Format("cbf{0}{1}",i.ToString(),postfix.ToString())'></label>
+                            @Html.RadioButton("cbf" + prefix.ToString(), "Two", new { id = "cbf" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
 
-                            @Html.CheckBox("cbf" + i.ToString() + postfix.ToString(), i % 2 != 0 ? true : false)
-                            <label for='@String.Format("cbf{0}{1}",i.ToString(),postfix.ToString())'></label>
+                            @Html.RadioButton("cbf" + prefix.ToString(), "One", new { id = "cbf" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
 
+
+                            @{prefix++; }
                         </div>
 
                     <br />
                 }}
+        </div>
+        <div class="row">
 
             <h1>Vina</h1>
             @{ postfix = 1;}
-            @{ for (int i = 0; i < 4; i++)
+            @{ prefix = 1;}
+            @{ for (int i = 0; i < Model.Wine.Count; i++)
                 {
-                        <div class="rating">
-                            @Html.CheckBox("cbw" + i.ToString() + postfix.ToString(), i % 2 != 0 || i == 0 ? true : false)
-                            <label for='@String.Format("cbw{0}{1}",i.ToString(),postfix.ToString())'></label>
+                        <div id="detailsCard" class="rating jumbotron col-lg-6">
+                            <span class="detailsTitle">@Model.Wine[i].Name</span>
+
+                            <img src="@Model.Wine[i].Image" class="foodImg" />
+
+                            @Html.RadioButton("cbw" + prefix.ToString(), "Five", false, new { id = "cbw" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
-                            @Html.CheckBox("cbw" + i.ToString() + postfix.ToString(), i % 2 != 0 ? true : false)
-                            <label for='@String.Format("cbw{0}{1}",i.ToString(),postfix.ToString())'></label>
+                            @Html.RadioButton("cbw" + prefix.ToString(), "Four", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
-                            @Html.CheckBox("cbw" + i.ToString() + postfix.ToString(), i % 2 != 0 ? true : false)
-                            <label for='@String.Format("cbw{0}{1}",i.ToString(),postfix.ToString())'></label>
+
+                            @Html.RadioButton("cbw" + prefix.ToString(), "Three", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
-                            @Html.CheckBox("cbw" + i.ToString() + postfix.ToString(), i % 2 != 0 ? true : false)
-                            <label for='@String.Format("cbw{0}{1}",i.ToString(),postfix.ToString())'></label>
+
+                            @Html.RadioButton("cbw" + prefix.ToString(), "Two", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
-                            @Html.CheckBox("cbw" + i.ToString() + postfix.ToString(), i % 2 != 0 ? true : false)
-                            <label for='@String.Format("cbw{0}{1}",i.ToString(),postfix.ToString())'></label>
+
+                            @Html.RadioButton("cbw" + prefix.ToString(), "One", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                            <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
                             @{postfix++; }
+
+                            @{prefix++; }
+
                         </div>
 
                     <br />
                 }}
-
-            @*@foreach (var food in Model.Food)
-                {
-                    @Html.DisplayFor(m => food, new { @class = "form-control text-center" })
-                }
-
-                @foreach (var wine in Model.Wine)
-                {
-                    @Html.DisplayFor(m => wine, new { @class = "form-control text-center" })
-
-                }*@
-
-
         </div>
+    </div>
+        @*@foreach (var food in Model.Food)
+        {
+            @Html.DisplayFor(m => food, new { @class = "form-control text-center" })
+        }
+
+        @foreach (var wine in Model.Wine)
+        {
+            @Html.DisplayFor(m => wine, new { @class = "form-control text-center" })
+
+        }*@
+
+
+    </div>
         @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
         @*<a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>*@
         <input id="Button1" type="button" value="Go Back" onclick="location.href='@Url.Action("Index","Home")'" />

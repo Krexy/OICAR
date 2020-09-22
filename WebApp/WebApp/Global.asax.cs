@@ -118,12 +118,12 @@ namespace WebApp
             serializer.WriteObject(writer, model1);
             writer.Close();
 
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.IndentChars = ("\t");
-            settings.OmitXmlDeclaration = true;
-            System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(model1.GetType());
-            x.Serialize(XmlWriter.Create(urlPath, settings), model1);
+            //XmlWriterSettings settings = new XmlWriterSettings();
+            //settings.Indent = true;
+            //settings.IndentChars = ("\t");
+            //settings.OmitXmlDeclaration = true;
+            //System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(model1.GetType());
+            //x.Serialize(XmlWriter.Create(urlPath, settings), model1);
 
 
         }

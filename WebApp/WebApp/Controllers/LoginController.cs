@@ -54,9 +54,16 @@ namespace WebApp.Controllers
 
 
             List<Food> hrana = new List<Food>();
-            hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku",1));
+            hrana.Add(new Food("Jetrica", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://hmdk.hr/wp-content/uploads/2019/02/15.jpg", 11));
+            hrana.Add(new Food("Juha", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://hmdk.hr/wp-content/uploads/2019/02/15.jpg", 12));
+            hrana.Add(new Food("Špageti", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://hmdk.hr/wp-content/uploads/2019/02/15.jpg", 13));
+            hrana.Add(new Food("Sarma", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://hmdk.hr/wp-content/uploads/2019/02/15.jpg", 14));
+            hrana.Add(new Food("Riba", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://hmdk.hr/wp-content/uploads/2019/02/15.jpg", 15));
             List<Wine> vina = new List<Wine>();
-            vina.Add(new Wine("vino", new GradeSpread(1, 2, 3, 4, 5), 3.2, "vino nema sliku",2));
+            vina.Add(new Wine("Graševina", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg", 21));
+            vina.Add(new Wine("Hrnjevac", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg", 22));
+            vina.Add(new Wine("Pinot", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg", 23));
+            vina.Add(new Wine("Plavac", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg", 24));
             GradeSpread gradeSpread = new GradeSpread(1, 2, 3, 4, 5);
 
             RestaurantModel restaurant1 = new RestaurantModel("drugi sadfa", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",3);

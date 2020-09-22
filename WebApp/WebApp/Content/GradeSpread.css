@@ -1,27 +1,85 @@
-﻿.rating {
-    display:flex;
-    transform:rotateY(180deg);
+﻿.detailsTitle {
+    position: absolute;
+    max-width: 40%;
+    transform: rotateY(180deg) translateX(-60px) translateY(-20px);
+    color: orange;
+    font-size: 2.5em;
+    font-weight: 800;
+    font-family: Segoe Script;
+    font-style: oblique;
+    text-align: center;
+    justify-content: center;
+}
+
+.foodImg {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    border: 1px solid #ffa50091;
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2), 0 16px 20px 0 rgba(0, 0, 0, 1);
+    transform: translateY(40px) translateX(-30px);
+    width: 80%
+}
+
+#detailsCard {
+    border-bottom-right-radius: 15%;
+    border-top-left-radius: 15%;
+    box-shadow: inset 5px 7px 10px rgba(255, 255, 255, 0.83), /*bottom external highlight*/
+    inset -10px -5px 5px rgba(102, 102, 102, 0.29), /*top external shadow*/
+    0 10px 18px 0 rgba(0, 0, 0, 0.2), 20px 16px 20px 0 rgba(0, 0, 0, 1);
+    animation: flyin;
+    animation-duration: 1s;
+    transform: scale(1) rotateY(180deg) translateX(100px);
+    transition-duration: 1s;
+}
+
+@keyframes flyin {
+    0% {
+        opacity:0;
+        transform: translateY(65%) rotateY(180deg) translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%) rotateY(180deg) translateX(100px);
+    }
+}
+
+#detailsCard:hover {
+    transform: scale(1.1) rotateY(180deg) translateX(120px);
+    transition-duration: 1s;
+}
+
+.rating {
+    display: flex;
+    transform: rotateY(180deg) translateX(80%) translateX(-150px);
+    width: 350px;
+    height: 400px;
 }
 
 .rating input {
-    display:none;
+    display: none;
 }
 
 .rating label {
     display: block;
     cursor: pointer;
     width: 50px;
+    height:50px;
     /*background: #ccc;*/
+    transform: translateY(250px);
 }
 
 .rating label:before {
     content: '\f005';
-    font-family:fontAwesome;
-    position:relative;
-    display:block;
-    font-size:50px;
+    font-family: fontAwesome;
+    position: relative;
+    display: block;
+    font-size: 50px;
     color: #101010;
 }
+
 .rating label:after {
     content: '\f005';
     font-family: fontAwesome;
@@ -29,17 +87,12 @@
     display: block;
     font-size: 50px;
     color: orange;
-    transform:translateY(-71px);
-    opacity:0;
+    transform: translateY(-71px);
+    opacity: 0;
     transition: .5s;
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
-.rating label:hover:after,
-.rating label:hover ~ label:after,
-.rating input:checked ~ label:after {
-    opacity: 1;
-}
 
-.rating input:not(:checked) ~ label:before{
+.rating label:hover:after, .rating label:hover ~ label:after, .rating input:checked ~ label:after {
     opacity: 1;
 }

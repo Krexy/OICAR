@@ -7,6 +7,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     @*<link href="~/Content/RestaurantOverview.css" rel="stylesheet" />*@
     @Styles.Render("~/Content/css")
     <title>FINE</title>
@@ -43,7 +44,7 @@
     @foreach (WebApp.Models.RestaurantModel r in WebApiApplication.filteredRestaurants)
     {
         <div id="divLogin" class="col-md-4">
-            <a href="@Url.Action("RestaurantDetails","Home",new { name = r.RestaurantName})" class="RestaurantCard">
+            <a href="@Url.Action("RestaurantDetails", "Home", new { name = r.RestaurantName })" class="RestaurantCard">
                 <div id="slide" class="jumbotron" style="background-color: #3e3e3eba;">
                     <div class="row" style="text-align:center;">
                         @*style="justify-content:center;text-align:center;align-content:center;"*@
@@ -53,21 +54,33 @@
                         <br />
                         <br />
                         <br />
-                        @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "form-control text-center" })
-                        @*@Html.Label(r.Food[0].Name, htmlAttributes: new { @class = "form-control text-center" })
-                            @Html.Label(r.Wine[0].Name, htmlAttributes: new { @class = "form-control text-center" })*@
-                        @{int intPart = (int)r.Grade.One; int DecimalPart = (int)((r.Grade.One - intPart) * 10); int counter = 5;}
-                        @Html.Label("Ocjena:", htmlAttributes: new { @class = "form-control text-center" })
+                        @Html.Label(r.RestaurantDetails, htmlAttributes: new { @class = "text-center", style = "font-family:'Poppins',sans-serif; color:#ffffff99;" })
+
+                        @{decimal nbrReviews = r.Grade.Five + r.Grade.Four + r.Grade.Three + r.Grade.Two + r.Grade.One;}
+                        @if (nbrReviews == 0)
+                        {
+                            nbrReviews = 1;
+                        }
+                        <br />
+                        <br />
+
+                        @{decimal sum = 5 * r.Grade.Five + 4 * r.Grade.Four + 3 * r.Grade.Three + 2 * r.Grade.Two + r.Grade.One;}
+                        @{decimal average = Math.Round(sum / nbrReviews, 2);}
+                        @{decimal intPart = Math.Truncate(average); decimal DecimalPart = (average - intPart) * 100; int counter = 5;}
+                        @Html.Label("Korisničko zadovoljstov: ", htmlAttributes: new { @class = " text-center", style = "font-family:'Poppins',sans-serif; color:#ffffff99;" })
+                        @Html.Label(Math.Truncate(average).ToString() +","+ Math.Truncate(DecimalPart).ToString()+ "/5", htmlAttributes: new { @class = " text-center", style = "font-family:'Poppins',sans-serif; color:#ffffff99;" })
+                        
+                        <br />
                         @while (counter > 0)
                         {
-                            while (intPart > 0)
+                            while (Math.Truncate(intPart) > 0)
                             {
                                 <i class="fa fa-star MyStar" style="text-shadow: 0 2px 5px rgba(0,0,0,.5);"></i>
                                 intPart--;
                                 counter--;
                             }
 
-                            if (DecimalPart >= 5)
+                            if (DecimalPart >= 50)
                             {
                                 <i class="fa fa-star-half-full MyStar" style="text-shadow: 0 2px 5px rgba(0,0,0,.5);"></i>
                                 DecimalPart = 0;
@@ -75,7 +88,10 @@
                             }
                             else
                             {
-                                <i class="fa fa-star-o MyStar" style="text-shadow: 0 2px 5px rgba(0,0,0,.5);"></i>
+                                if (counter != 0)
+                                {
+                                    <i class="fa fa-star-o MyStar" style="text-shadow: 0 2px 5px rgba(0,0,0,.5);"></i>
+                                }
                             }
                             counter--;
                         }

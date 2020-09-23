@@ -64,16 +64,18 @@ namespace WebApp.Controllers
             vina.Add(new Wine("Hrnjevac", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg", 22));
             vina.Add(new Wine("Pinot", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg", 23));
             vina.Add(new Wine("Plavac", new GradeSpread(1, 2, 3, 4, 5), 3.2, "https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg", 24));
-            GradeSpread gradeSpread = new GradeSpread(1, 2, 3, 4, 5);
+            GradeSpread gradeSpread = new GradeSpread(20, 6, 15, 63, 150);
+            //GradeSpread gradeSpread = new GradeSpread(0, 0, 0, 0, 0);
+            string opis = "Ovaj restoran ima najukusniju hranu, najbolja vina, i predivnu atmosferu";
 
-            RestaurantModel restaurant1 = new RestaurantModel("drugi sadfa", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",3);
-            RestaurantModel restaurant2 = new RestaurantModel("treci", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",4);
-            RestaurantModel restaurant3 = new RestaurantModel("cetvrti","nema",hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",5);
-            RestaurantModel restaurant4 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",6);
-            RestaurantModel restaurant5 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",7);
-            RestaurantModel restaurant6 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",8);
-            RestaurantModel restaurant7 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",9);
-            RestaurantModel restaurant8 = new RestaurantModel("drugi", "nema", hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",10);
+            RestaurantModel restaurant1 = new RestaurantModel("drugi sadfa", opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",3);
+            RestaurantModel restaurant2 = new RestaurantModel("treći", opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",4);
+            RestaurantModel restaurant3 = new RestaurantModel("četvrti", opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",5);
+            RestaurantModel restaurant4 = new RestaurantModel("peti", opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",6);
+            RestaurantModel restaurant5 = new RestaurantModel("šesti",opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",7);
+            RestaurantModel restaurant6 = new RestaurantModel("sedmi",opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",8);
+            RestaurantModel restaurant7 = new RestaurantModel("osmi",opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",9);
+            RestaurantModel restaurant8 = new RestaurantModel("deveti",opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",10);
             WebApiApplication.restaurants.Add(restaurant1);
             WebApiApplication.restaurants.Add(restaurant2);
             WebApiApplication.restaurants.Add(restaurant3);

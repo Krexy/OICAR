@@ -1,6 +1,7 @@
 ﻿@model WebApp.Models.RestaurantModel
 
 @{
+    ViewBag.Title = "Restaurant Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,29 +12,55 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/Content/Rating.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/RRating.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/GradeSpread.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     @*@Styles.Render("~/Content/css")*@
 
     <title>@WebApp.Resources.DefaultLanguage.RestaurantDetails</title>
 </head>
-<body>
+<body id="restaurantDetailsBG">
     @using (Html.BeginForm("UpdateGrade", "Home", new { RestaurantName = Model.RestaurantName }, FormMethod.Post, null))
     {
+    <div id="idHeader" class="restaurantHeader jumbotron">
+        <img src='@Model.Image' />
+        <br />
+        <br />
+        <hr style="border:3px solid orange;">
 
-    <div>
-        <h1>@WebApp.Resources.DefaultLanguage.RestaurantDetails</h1>
+        @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
+        @*<a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>*@
+
+        <div class="rrating">
+            @Html.RadioButton("cbr", "Five", false, new { id = "cbr1" })
+            <label for="cbr1"></label>
+            @Html.RadioButton("cbr", "Four", new { id = "cbr2" })
+            <label for="cbr2"></label>
+            @Html.RadioButton("cbr", "Three", new { id = "cbr3" })
+            <label for="cbr3"></label>
+            @Html.RadioButton("cbr", "Two", new { id = "cbr4" })
+            <label for="cbr4"></label>
+            @Html.RadioButton("cbr", "One", new { id = "cbr5" })
+            <label for="cbr5"></label>
+
+            <h2 style="color:white;transform:rotateY(180deg);margin-top:16px;">Ocijeni Restoran: &nbsp;&nbsp;</h2>
+        </div>
+    </div>
+
+        <h1  id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;" class="jumbotron">Ocijeni Jela:</h1>
         @*@Html.DisplayFor(m => m, new { @class = "form-control text-center" })
-        @Html.DisplayFor(m => m.Grade, new { @class = "form-control text-center" })*@
+            @Html.DisplayFor(m => m.Grade, new { @class = "form-control text-center" })*@
 
-        <h1>Jela</h1>
-        @{ int postfix = 1;}
-        @{ int prefix = 1;}
-    <div class="container">
-        <div class="row">
-            @{ for (int i = 0; i < Model.Food.Count; i++)
-                {
-                    //if( WebApp.Models.WebUser.VID.Contains( contains  Model.Food[i].VID ))
-                        <div id="detailsCard" class="rating jumbotron col-lg-1">
+
+        <div class="container">
+            <div class="row">
+                @{ int postfix = 1;}
+                @{ int prefix = 1;}
+                @{ for (int i = 0; i < Model.Food.Count; i++)
+                    {
+                        //if( WebApp.Models.WebUser.VID.Contains( contains  Model.Food[i].VID ))
+
+                        <div id="detailsCard" class="rating jumbotron col-lg-1 ">
                             <span class="detailsTitle">@Model.Food[i].Name</span>
 
                             <img src="@Model.Food[i].Image" class="foodImg" />
@@ -62,16 +89,16 @@
                             @{prefix++; }
                         </div>
 
-                    <br />
-                }}
-        </div>
-        <div class="row">
+                        <br />
+                    }}
+            </div>
+            <div class="row">
+                <h1 id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;width:98%;" class="jumbotron">Ocijeni Vina:</h1>
 
-            <h1>Vina</h1>
-            @{ postfix = 1;}
-            @{ prefix = 1;}
-            @{ for (int i = 0; i < Model.Wine.Count; i++)
-                {
+                @{ postfix = 1;}
+                @{ prefix = 1;}
+                @{ for (int i = 0; i < Model.Wine.Count; i++)
+                    {
                         <div id="detailsCard" class="rating jumbotron col-lg-6">
                             <span class="detailsTitle">@Model.Wine[i].Name</span>
 
@@ -100,27 +127,22 @@
 
                         </div>
 
-                    <br />
-                }}
+                        <br />
+                    }}
+            </div>
         </div>
-    </div>
-        @*@foreach (var food in Model.Food)
-        {
-            @Html.DisplayFor(m => food, new { @class = "form-control text-center" })
-        }
 
-        @foreach (var wine in Model.Wine)
-        {
-            @Html.DisplayFor(m => wine, new { @class = "form-control text-center" })
+        <div id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;text-align:center;" class="jumbotron">
 
-        }*@
+            @*<input id="Button1" type="button" value="Go Back" onclick="location.href='@Url.Action("Index","Home")'" />*@
 
+            <button class="btn btn-success" id="btnLogin" type="submit" style="width:50%;">Potvrdi Ocjene</button>
+            <br />
+            <br />
+            <button class="btn btn-danger" id="btnLogin" onclick="location.href='@Url.Action("Index","Home")'" type="button" style="width:50%;">Odustani</button>
 
-    </div>
-        @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
-        @*<a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>*@
-        <input id="Button1" type="button" value="Go Back" onclick="location.href='@Url.Action("Index","Home")'" />
-        <button class="btn btn-success" id="btnLogin" type="submit">Submit Grade</button>
+        </div>
+
     }
 </body>
 </html>

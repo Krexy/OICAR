@@ -169,6 +169,7 @@
     <Content Include="Content\Rating.css" />
     <Content Include="Content\Registration.css" />
     <Content Include="Content\RestaurantOverview.css" />
+    <Content Include="Content\RRating.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -79,7 +79,6 @@ span.psw {
     inset -10px -5px 5px #666, /*top external shadow*/
     0 10px 18px 0 rgba(0, 0, 0, 0.2), 20px 16px 20px 0 rgba(0, 0, 0, 1);
     /*border-radius:1.5%!important;*/
-
 }
 
 
@@ -95,3 +94,51 @@ span.psw {
     }
 }
 
+
+#btnLogin  {
+    background-color: rgba(255, 165, 0, 0.63);
+    border-color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    font-family: 'Poppins',sans-serif !important;
+    font-weight: bold;
+}
+#btnLogin:hover {
+    background-color: rgba(255, 165, 0, 1);
+}
+
+#btnConfirmRegister {
+    background-color: rgba(255, 165, 0, 0.63);
+    border-color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    font-family: 'Poppins',sans-serif !important;
+    font-weight: bold;
+}
+
+
+#btnConfirmRegister:hover {
+    background-color: rgba(255, 165, 0, 1);
+}
+
+
+#btnRegister{
+    background-color: rgba(25, 25, 25, 0.55);
+    border-color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    font-family: 'Poppins',sans-serif !important;
+    font-weight: bold;
+}
+
+    #btnRegister:hover {
+        background-color: rgba(25, 25, 25, 1);
+    }
+
+#btnCancle {
+    background-color: rgba(25, 25, 25, 0.55);
+    border-color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    font-family: 'Poppins',sans-serif !important;
+    font-weight: bold;
+}
+    #btnCancle:hover {
+        background-color: rgba(25, 25, 25, 1);
+    }

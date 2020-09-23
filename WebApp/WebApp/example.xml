@@ -1,23 +1,23 @@
 ﻿<RestaurantUserCombo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<RestaurantModel>
-		<RestaurantName>treci</RestaurantName>
-		<RestaurantDetails>nema</RestaurantDetails>
+		<RestaurantName>drugi sadfa</RestaurantName>
+		<RestaurantDetails>Ovaj restoran ima najukusniju hranu, najbolja vina, i predivnu atmosferu</RestaurantDetails>
 		<Food>
 			<Food>
-				<Name>hrana</Name>
+				<Name>Jetrica</Name>
 				<Grade>
 					<One>1</One>
 					<Two>2</Two>
 					<Three>3</Three>
 					<Four>4</Four>
-					<Five>6</Five>
+					<Five>5</Five>
 				</Grade>
-				<Price>3.2</Price>
-				<Image>hrana nema sliku</Image>
+				<Price>30.99</Price>
+				<Image>https://hmdk.hr/wp-content/uploads/2019/02/15.jpg</Image>
 				<VID>11</VID>
 			</Food>
 			<Food>
-				<Name>hrana</Name>
+				<Name>Juha</Name>
 				<Grade>
 					<One>1</One>
 					<Two>2</Two>
@@ -25,100 +25,113 @@
 					<Four>4</Four>
 					<Five>5</Five>
 				</Grade>
-				<Price>3.2</Price>
-				<Image>hrana nema sliku</Image>
+				<Price>343.2</Price>
+				<Image>https://hmdk.hr/wp-content/uploads/2019/02/15.jpg</Image>
 				<VID>12</VID>
 			</Food>
 			<Food>
-				<Name>hrana</Name>
+				<Name>Špageti</Name>
 				<Grade>
-					<One>2</One>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>342</Price>
+				<Image>https://hmdk.hr/wp-content/uploads/2019/02/15.jpg</Image>
+				<VID>13</VID>
+			</Food>
+			<Food>
+				<Name>Sarma</Name>
+				<Grade>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>10.15</Price>
+				<Image>https://hmdk.hr/wp-content/uploads/2019/02/15.jpg</Image>
+				<VID>14</VID>
+			</Food>
+			<Food>
+				<Name>Riba</Name>
+				<Grade>
+					<One>1</One>
 					<Two>2</Two>
 					<Three>3</Three>
 					<Four>4</Four>
 					<Five>5</Five>
 				</Grade>
 				<Price>3.2</Price>
-				<Image>hrana nema sliku</Image>
-				<VID>13</VID>
-			</Food>
-			<Food>
-				<Name>hrana</Name>
-				<Grade>
-					<One>1</One>
-					<Two>2</Two>
-					<Three>3</Three>
-					<Four>5</Four>
-					<Five>5</Five>
-				</Grade>
-				<Price>3.2</Price>
-				<Image>hrana nema sliku</Image>
-				<VID>14</VID>
+				<Image>https://hmdk.hr/wp-content/uploads/2019/02/15.jpg</Image>
+				<VID>15</VID>
 			</Food>
 		</Food>
 		<Wine>
 			<Wine>
-				<Name>vino</Name>
+				<Name>Graševina</Name>
 				<Grade>
 					<One>1</One>
 					<Two>2</Two>
 					<Three>3</Three>
-					<Four>5</Four>
+					<Four>4</Four>
 					<Five>5</Five>
 				</Grade>
 				<Price>3.2</Price>
-				<Image>vino nema sliku</Image>
+				<Image>https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg</Image>
 				<VID>21</VID>
 			</Wine>
 			<Wine>
-				<Name>vino</Name>
+				<Name>Hrnjevac</Name>
 				<Grade>
 					<One>1</One>
 					<Two>2</Two>
-					<Three>4</Three>
+					<Three>3</Three>
 					<Four>4</Four>
 					<Five>5</Five>
 				</Grade>
 				<Price>3.2</Price>
-				<Image>vino nema sliku</Image>
+				<Image>https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg</Image>
 				<VID>22</VID>
 			</Wine>
 			<Wine>
-				<Name>vino</Name>
+				<Name>Pinot</Name>
 				<Grade>
 					<One>1</One>
-					<Two>2</Two>
-					<Three>3</Three>
-					<Four>4</Four>
-					<Five>6</Five>
-				</Grade>
-				<Price>3.2</Price>
-				<Image>vino nema sliku</Image>
-				<VID>23</VID>
-			</Wine>
-			<Wine>
-				<Name>vino</Name>
-				<Grade>
-					<One>2</One>
 					<Two>2</Two>
 					<Three>3</Three>
 					<Four>4</Four>
 					<Five>5</Five>
 				</Grade>
 				<Price>3.2</Price>
-				<Image>vino nema sliku</Image>
+				<Image>https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg</Image>
+				<VID>23</VID>
+			</Wine>
+			<Wine>
+				<Name>Plavac</Name>
+				<Grade>
+					<One>1</One>
+					<Two>2</Two>
+					<Three>3</Three>
+					<Four>4</Four>
+					<Five>5</Five>
+				</Grade>
+				<Price>3.2</Price>
+				<Image>https://img.etimg.com/thumb/msid-44856181,width-1200,height-900,imgsize-95099,overlay-etpanache/photo.jpg</Image>
 				<VID>24</VID>
 			</Wine>
 		</Wine>
 		<Image>https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg</Image>
 		<Grade>
-			<One>1</One>
-			<Two>2</Two>
-			<Three>3</Three>
-			<Four>4</Four>
-			<Five>5</Five>
+			<One>20</One>
+			<Two>6</Two>
+			<Three>15</Three>
+			<Four>63</Four>
+			<Five>151</Five>
 		</Grade>
-		<VID>4</VID>
+		<VID>3</VID>
 	</RestaurantModel>
 	<WebUser>asdf</WebUser>
 </RestaurantUserCombo>

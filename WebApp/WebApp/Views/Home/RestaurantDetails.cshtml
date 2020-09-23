@@ -22,32 +22,32 @@
 <body id="restaurantDetailsBG">
     @using (Html.BeginForm("UpdateGrade", "Home", new { RestaurantName = Model.RestaurantName }, FormMethod.Post, null))
     {
-    <div id="idHeader" class="restaurantHeader jumbotron">
-        <img src='@Model.Image' />
-        <br />
-        <br />
-        <hr style="border:3px solid orange;">
+        <div id="idHeader" class="restaurantHeader jumbotron">
+            <img src='@Model.Image' />
+            <br />
+            <br />
+            <hr style="border:3px solid orange;">
 
-        @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
-        @*<a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>*@
+            @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
+            @*<a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>*@
 
-        <div class="rrating">
-            @Html.RadioButton("cbr", "Five", false, new { id = "cbr1" })
-            <label for="cbr1"></label>
-            @Html.RadioButton("cbr", "Four", new { id = "cbr2" })
-            <label for="cbr2"></label>
-            @Html.RadioButton("cbr", "Three", new { id = "cbr3" })
-            <label for="cbr3"></label>
-            @Html.RadioButton("cbr", "Two", new { id = "cbr4" })
-            <label for="cbr4"></label>
-            @Html.RadioButton("cbr", "One", new { id = "cbr5" })
-            <label for="cbr5"></label>
+            <div class="rrating">
+                @Html.RadioButton("cbr", "Five", false, new { id = "cbr1" })
+                <label for="cbr1"></label>
+                @Html.RadioButton("cbr", "Four", new { id = "cbr2" })
+                <label for="cbr2"></label>
+                @Html.RadioButton("cbr", "Three", new { id = "cbr3" })
+                <label for="cbr3"></label>
+                @Html.RadioButton("cbr", "Two", new { id = "cbr4" })
+                <label for="cbr4"></label>
+                @Html.RadioButton("cbr", "One", new { id = "cbr5" })
+                <label for="cbr5"></label>
 
-            <h2 style="color:white;transform:rotateY(180deg);margin-top:16px;">Ocijeni Restoran: &nbsp;&nbsp;</h2>
+                <h2 style="color:white;transform:rotateY(180deg);margin-top:16px;">Ocijeni Restoran: &nbsp;&nbsp;</h2>
+            </div>
         </div>
-    </div>
 
-        <h1  id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;" class="jumbotron">Ocijeni Jela:</h1>
+        <h1 id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;text-align:center;" class="jumbotron">Ocijeni Jela:</h1>
         @*@Html.DisplayFor(m => m, new { @class = "form-control text-center" })
             @Html.DisplayFor(m => m.Grade, new { @class = "form-control text-center" })*@
 
@@ -60,10 +60,19 @@
                     {
                         //if( WebApp.Models.WebUser.VID.Contains( contains  Model.Food[i].VID ))
 
-                        <div id="detailsCard" class="rating jumbotron col-lg-1 ">
+                        <div id="detailsCard" class="rating jumbotron col-lg-1">
                             <span class="detailsTitle">@Model.Food[i].Name</span>
 
                             <img src="@Model.Food[i].Image" class="foodImg" />
+
+                            <span class="detailsPrice">@Model.Food[i].Price kn</span>
+
+                            @{decimal nbrReviews = Model.Food[i].Grade.Five + Model.Food[i].Grade.Four + Model.Food[i].Grade.Three + Model.Food[i].Grade.Two + Model.Food[i].Grade.One;}
+                            @{decimal sum = 5 * Model.Food[i].Grade.Five + 4 * Model.Food[i].Grade.Four + 3 * Model.Food[i].Grade.Three + 2 * Model.Food[i].Grade.Two + Model.Food[i].Grade.One;}
+                            @{decimal average = Math.Round(sum / nbrReviews, 2);}
+                            @{decimal intPart = Math.Truncate(average); decimal DecimalPart = (average - intPart) * 100;}
+                            <span class="detailsReview">Prosječna Ocjena: @String.Format("{0},{1}/5", Math.Truncate(average), Math.Truncate(DecimalPart))</span>
+
 
                             @Html.RadioButton("cbf" + prefix.ToString(), "Five", false, new { id = "cbf" + i.ToString() + postfix.ToString() })
                             <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
@@ -93,7 +102,7 @@
                     }}
             </div>
             <div class="row">
-                <h1 id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;width:98%;" class="jumbotron">Ocijeni Vina:</h1>
+                <h1 id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;width:98%;text-align:center;" class="jumbotron">Ocijeni Vina:</h1>
 
                 @{ postfix = 1;}
                 @{ prefix = 1;}
@@ -102,7 +111,15 @@
                         <div id="detailsCard" class="rating jumbotron col-lg-6">
                             <span class="detailsTitle">@Model.Wine[i].Name</span>
 
-                            <img src="@Model.Wine[i].Image" class="foodImg" />
+                            <img src="@Model.Wine[i].Image" class="foodImg" style="height:40%;" />
+
+                            <span class="detailsPrice">@Model.Wine[i].Price kn</span>
+
+                            @{decimal nbrReviews = Model.Wine[i].Grade.Five + Model.Wine[i].Grade.Four + Model.Wine[i].Grade.Three + Model.Wine[i].Grade.Two + Model.Wine[i].Grade.One;}
+                            @{decimal sum = 5 * Model.Wine[i].Grade.Five + 4 * Model.Wine[i].Grade.Four + 3 * Model.Wine[i].Grade.Three + 2 * Model.Wine[i].Grade.Two + Model.Wine[i].Grade.One;}
+                            @{decimal average = Math.Round(sum / nbrReviews, 2);}
+                            @{decimal intPart = Math.Truncate(average); decimal DecimalPart = (average - intPart) * 100;}
+                            <span class="detailsReview">Prosječna Ocjena: @String.Format("{0},{1}/5", Math.Truncate(average), Math.Truncate(DecimalPart))</span>
 
                             @Html.RadioButton("cbw" + prefix.ToString(), "Five", false, new { id = "cbw" + i.ToString() + postfix.ToString() })
                             <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
@@ -132,14 +149,14 @@
             </div>
         </div>
 
-        <div id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;text-align:center;" class="jumbotron">
+        <div id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg) scale(1.2);animation:none;left:10%;text-align:center;width:50%;margin-top:50px;" class="jumbotron">
 
             @*<input id="Button1" type="button" value="Go Back" onclick="location.href='@Url.Action("Index","Home")'" />*@
 
-            <button class="btn btn-success" id="btnLogin" type="submit" style="width:50%;">Potvrdi Ocjene</button>
+            <button class="btn btn-success" id="btnSubmitGrade" type="submit" style="width:100%;">Potvrdi Ocjene</button>
             <br />
             <br />
-            <button class="btn btn-danger" id="btnLogin" onclick="location.href='@Url.Action("Index","Home")'" type="button" style="width:50%;">Odustani</button>
+            <button class="btn btn-danger" id="btnGiveUp" onclick="location.href='@Url.Action("Index","Home")'" type="button" style="width:100%;">Odustani</button>
 
         </div>
 

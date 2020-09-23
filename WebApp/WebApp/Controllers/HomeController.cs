@@ -89,16 +89,17 @@ namespace WebApp.Controllers
             //            postfix++;
             //        }
             //    }
+            SetRestaurantGradeSpread("cbr", model);
             List<GradeSpread> FGradeSpread = GetGradeSpread("cbf", model);
             List<GradeSpread> WGradeSpread = GetGradeSpread("cbw", model);
 
             int Fcounter = 0;
             foreach (var food in FGradeSpread)
             {
-                model.Food[Fcounter].Grade.One += food.One; 
-                model.Food[Fcounter].Grade.Two += food.Two; 
-                model.Food[Fcounter].Grade.Three += food.Three; 
-                model.Food[Fcounter].Grade.Four += food.Four; 
+                model.Food[Fcounter].Grade.One += food.One;
+                model.Food[Fcounter].Grade.Two += food.Two;
+                model.Food[Fcounter].Grade.Three += food.Three;
+                model.Food[Fcounter].Grade.Four += food.Four;
                 model.Food[Fcounter].Grade.Five += food.Five;
                 Fcounter++;
             }
@@ -117,11 +118,43 @@ namespace WebApp.Controllers
 
 
             RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser = currentUser };
+
             string path = ControllerContext.HttpContext.Server.MapPath("~/example.xml");
 
             WebApiApplication.BackendPostWithReturnTest<RestaurantUserCombo, List<RestaurantModel>>(restaurantUserCombo, path);
 
             return View("RestaurantDetails", model);
+        }
+
+        private void SetRestaurantGradeSpread(string clue, RestaurantModel model)
+        {
+
+            String grade = Request.Form[clue];
+            //List<string> grades = request.ToString().Split(',').ToList();
+
+            //foreach (var grade in grades)
+            //{
+                switch (grade)
+                {
+                    case "One":
+                        model.Grade.One += 1;
+                        break;
+                    case "Two":
+                        model.Grade.Two += 1;
+                        break;
+                    case "Three":
+                        model.Grade.Three += 1;
+                        break;
+                    case "Four":
+                        model.Grade.Four += 1;
+                        break;
+                    case "Five":
+                        model.Grade.Five += 1;
+                        break;
+                    default:
+                        break;
+                }
+            //}
         }
 
         private List<GradeSpread> GetGradeSpread(string clue, RestaurantModel model)
@@ -149,12 +182,12 @@ namespace WebApp.Controllers
                 for (int i = 0; i < model.Food.Count; i++)
                 {
                     stringBuilder.Append(Request.Form[clue + prefix.ToString()]);
-                    if (!(i == model.Food.Count-1))
+                    if (!(i == model.Food.Count - 1))
                     {
                         stringBuilder.Append(",");
                     }
                     prefix++;
-                    
+
                 }
             }
             else
@@ -177,7 +210,7 @@ namespace WebApp.Controllers
                 for (int i = 0; i < model.Wine.Count; i++)
                 {
                     stringBuilder.Append(Request.Form[clue + prefix.ToString()]);
-                    if (!(i == model.Wine.Count-1))
+                    if (!(i == model.Wine.Count - 1))
                     {
                         stringBuilder.Append(",");
                     }

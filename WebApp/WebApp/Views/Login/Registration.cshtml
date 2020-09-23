@@ -12,7 +12,7 @@
 
     <title>@WebApp.Resources.DefaultLanguage.RegistrationPage</title>
 </head>
-<body style="background-color: #303030;">
+<body style="background-color: #303030;width:60%;margin-left:20%;margin-top:-10px;">
     @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
     {
         <br />
@@ -36,10 +36,10 @@
             <hr>
             <p>@WebApp.Resources.DefaultLanguage.TermsInfo @Html.ActionLink(WebApp.Resources.DefaultLanguage.TermsLink, "Terms", "Home", new { area = "" }, new { @class = "" }).</p>
 
-            <button type="submit" class="registerbtn btn btn-success">@WebApp.Resources.DefaultLanguage.Register</button>
+            <button type="submit" id="btnConfirmRegister" class="registerbtn btn btn-success">@WebApp.Resources.DefaultLanguage.Register</button>
             <br />
             <br />
-            <button type="button" class="cancelbtn btn btn-danger" style=" width: 100%;" onclick="location.href='@Url.Action("Index","Login")'">@WebApp.Resources.DefaultLanguage.CancelBtn</button>
+            <button type="button" id="btnCancle" class="cancelbtn btn btn-danger" style=" width: 100%;" onclick="location.href='@Url.Action("Index","Login")'">@WebApp.Resources.DefaultLanguage.CancelBtn</button>
 
             <hr />
         </div>

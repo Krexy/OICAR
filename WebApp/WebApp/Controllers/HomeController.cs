@@ -49,7 +49,7 @@ namespace WebApp.Controllers
 
         public ActionResult FilterRestaurants(string filter)
         {
-            WebApiApplication.filteredRestaurants = WebApiApplication.restaurants.Where(r => r.RestaurantName.Contains(filter)).ToList();
+            WebApiApplication.filteredRestaurants = WebApiApplication.restaurants.Where(r => r.RestaurantName.ToLower().Contains(filter.ToLower())).ToList();
             Response.Cookies.Add(new HttpCookie("Filter", filter));
             Response.Cookies["Filter"].Expires = DateTime.Now.AddMinutes(5);
             return View("Index");
@@ -116,12 +116,14 @@ namespace WebApp.Controllers
             }
 
 
+            RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser= new WebUser() { Username = currentUser} };
 
-            RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser = currentUser };
+            //string xmlPath = ControllerContext.HttpContext.Server.MapPath("~/example.xml");
 
-            string path = ControllerContext.HttpContext.Server.MapPath("~/example.xml");
-
-            WebApiApplication.BackendPostWithReturnTest<RestaurantUserCombo, List<RestaurantModel>>(restaurantUserCombo, path);
+            WebApiApplication.BackendPostWithReturn<RestaurantUserCombo, RestaurantsUserCombo>(restaurantUserCombo, WebApiApplication.URL_GRADE_UPDATE_PATH);
+            //Session["username"] = return_value.WebUser.Username;
+            //WebApiApplication.restaurants = return_value.RestaurantModels;
+            WebApiApplication.filteredRestaurants = WebApiApplication.restaurants;
 
             return View("RestaurantDetails", model);
         }

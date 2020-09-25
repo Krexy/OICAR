@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("FINE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand ", style = "color:orange;" })
+            </div>
+            @*@using (Html.BeginForm("FilterRestaurants", "Home", FormMethod.Post, new
+            {
+                id = "filterForm"
+            }))
+            {
+                <input id="autoCompInput" placeholder="@WebApp.Resources.DefaultLanguage.FilterRestaurants" value="@Response.Cookies["Filter"].Value.ToString()" type="text" name="filter" class="navbar-brand" style="position:relative; margin-left:34%;" />
+            }
+            <script>
+                $(document).ready(function () {
+                    $("#autoCompInput").bind("keypress", {}, keypressInBox);
+
+                    function keypressInBox(e) {
+                        var code = (e.keyCode ? e.keyCode : e.which);
+                        if (code == 13) { //Enter keycode
+                            e.preventDefault();
+
+                            $("filterForm").submit();
+                        }
+                    };
+                });
+            </script>*@
+
+            @*@RenderPage("~/Views/Shared/Language.cshtml")*@
+
+            @Html.ActionLink(WebApp.Resources.DefaultLanguage.SignOut, "SignOut", "Home", new { area = "" }, new { @class = "navbar-brand navbar-right" })
+
+            @*<div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+            </ul>
+        </div>*@
+        </div>
+
+    </div>
+    <div class="container body-content">
+        <br />
+        @RenderBody()
+        <br />
+        <br />
+
+    </div>
+    @*<footer style="justify-content:center;text-align:center; color:white;">
+        <br />
+        <p>
+            &copy; @DateTime.Now.ToShortDateString() -
+            @WebApp.Resources.DefaultLanguage.MyApp
+        </p>
+    </footer>*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html >

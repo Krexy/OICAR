@@ -1,0 +1,144 @@
+﻿/* Bordered form */
+form {
+    /*border: 3px solid #f1f1f1;*/
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+    /* Add a hover effect for buttons */
+    button:hover {
+        opacity: 0.8;
+    }
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+    position: relative;
+    /*text-shadow: 2px 2px 5px red;*/
+    width: 25%;
+    border-radius: 50%;
+    /*box-shadow: 10px 5px 15px orange;*/
+    border: 1px solid #ffa50091;
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2), 0 16px 20px 0 rgba(0, 0, 0, 1);
+    bottom: -20px;
+}
+
+img#Logo {
+    position: absolute;
+    top: 17%;
+    left: 40%;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+.jumbotron {
+    border-bottom-left-radius: 15%;
+    border-top-right-radius: 15%;
+    box-shadow: inset 10px 15px 5px #fff, /*bottom external highlight*/
+    inset -10px -5px 5px #666, /*top external shadow*/
+    0 10px 18px 0 rgba(0, 0, 0, 0.2), 20px 16px 20px 0 rgba(0, 0, 0, 1);
+    /*border-radius:1.5%!important;*/
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+
+#btnLogin  {
+    background-color: rgba(255, 165, 0, 0.63);
+    border-color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    font-family: 'Poppins',sans-serif !important;
+    font-weight: bold;
+}
+#btnLogin:hover {
+    background-color: rgba(255, 165, 0, 1);
+}
+
+#btnConfirmRegister {
+    background-color: rgba(255, 165, 0, 0.63);
+    border-color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    font-family: 'Poppins',sans-serif !important;
+    font-weight: bold;
+}
+
+
+#btnConfirmRegister:hover {
+    background-color: rgba(255, 165, 0, 1);
+}
+
+
+#btnRegister{
+    background-color: rgba(25, 25, 25, 0.55);
+    border-color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    font-family: 'Poppins',sans-serif !important;
+    font-weight: bold;
+}
+
+    #btnRegister:hover {
+        background-color: rgba(25, 25, 25, 1);
+    }
+
+#btnCancle {
+    background-color: rgba(25, 25, 25, 0.55);
+    border-color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    font-family: 'Poppins',sans-serif !important;
+    font-weight: bold;
+}
+    #btnCancle:hover {
+        background-color: rgba(25, 25, 25, 1);
+    }

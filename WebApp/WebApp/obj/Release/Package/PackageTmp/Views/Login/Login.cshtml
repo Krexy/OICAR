@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
+
+    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+    <title>@WebApp.Resources.DefaultLanguage.LoginPage</title>
+</head>
+<body style="background-color: #303030;">
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
+        <div class="imgcontainer">
+            @*<img src="https://www.amadriapark.com/hr/wp-content/uploads/sites/4/2018/08/ta-restaurant-camellia-1.jpg" alt="Avatar" class="avatar">*@
+            <img src="~/Content/Images/FINE-background.jpg" alt="Avatar" class="avatar">
+            <img id="Logo" src="~/Content/Images/FINE-logo.png" />
+        </div>
+
+
+        <div class="container jumbotron" style=" width: 25%; margin-left: auto; margin-right: auto;">
+
+
+            <label for="uname"><b>@WebApp.Resources.DefaultLanguage.Username</b></label>
+            <input id="txtUsername" type="text" placeholder="@WebApp.Resources.DefaultLanguage.InputName" value="@Request.Cookies["Username"].Value.ToString()" name="Username" required>
+
+
+            <label for="Pass"><b>@WebApp.Resources.DefaultLanguage.Password</b></label>
+            <input id="txtPassword" type="password" placeholder="@WebApp.Resources.DefaultLanguage.InputPassword" value="@Request.Cookies["Password"].Value.ToString()" name="Password" required>
+
+            <div id="divError">
+                <label id="divErrorText" style="color:red;"></label>
+            </div>
+
+
+            <button class="btn btn-success" id="btnLogin" type="submit"><b>@WebApp.Resources.DefaultLanguage.Login</b></button>
+            <br />
+            <br />
+            <button class="btn btn-info" id="btnRegister" type="button" onclick="location.href='@Url.Action("Registration","Login")'"><b>@WebApp.Resources.DefaultLanguage.Register</b></button>
+            <br />
+            <br />
+            <label>
+                <input type="checkbox" checked="checked" name="checkbox"> @WebApp.Resources.DefaultLanguage.RememberMe
+            </label>
+
+            <hr />
+
+        </div>
+
+    }
+    @RenderPage("~/Views/Shared/Language.cshtml")
+
+    @*<script>
+            $('#btnLogin').click(function () {
+                $.ajax({
+                    url: '<%= Url.Action("TokenTest", "Login") %>',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: {
+                        username: $('#txtUsername').val(),
+                        password: $('#txtPassword').val(),
+                        grant_type: 'password'
+                    },
+                    success: function (response) {
+                        localStorage.setItem("accessToken", response.access_token);
+
+                    },
+                    error: function (jqXHR) {
+                        $('#divErrorText').text(jqXHR.responseText);
+                        $('#divError').show('fade');
+                    }
+                });
+
+            });
+
+        </script>*@
+</body>
+
+</html>
+
+
+
+
+
+
+
+

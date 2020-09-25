@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
@@ -13,17 +14,18 @@ namespace WebApp.Models
         public string Username { get; set; }
         [DataMember(Order = 1)]
         public string Pass { get; set; }
+
         [DataMember(Order = 2)]
         public string Email { get; set; }
         [DataMember(Order = 3)]
-        public List<int> VID { get; set; }
+        public string VIDs { get; set; }
 
-        public WebUser(string username, string pass, string email, List<int> vid)
+        public WebUser(string username, string pass, string email, string vids)
         {
             Username = username;
             Pass = pass;
             Email = email;
-            VID = vid;
+            VIDs = vids;
         }
 
         public WebUser()

@@ -35,23 +35,26 @@ namespace WebApp.Controllers
             return View("Login");
         }
 
-        //[HttpPost]
+        [HttpPost]
         public ActionResult Login(Login user, string checkbox)
         {
 
 
             //user se spaja preko name taga
 
-            //WebApiApplication.restaurants = WebApiApplication.BackendPostWithReturn<Login, List<RestaurantModel>>(user, WebApiApplication.URL_LOGIN_PATH);
-            WebApiApplication.restaurants = new List<RestaurantModel>();
+            RestaurantsUserCombo combo = WebApiApplication.BackendPostWithReturn<Login, RestaurantsUserCombo>(user, WebApiApplication.URL_LOGIN_PATH);
 
-            //Store the products to a session         
+            //string test = combo.WebUser.Username;
+
+            if (combo.WebUser == null)
+            {
+                return View("Login");
+
+            }
+            WebApiApplication.restaurants = combo.RestaurantModels;
+
             Session["username"] = user.Username;
-
-            //To get what you have stored to a session
-            string currentUser = Session["username"] as String;
-
-
+          
 
             List<Food> hrana = new List<Food>();
             hrana.Add(new Food("Jetrica", new GradeSpread(1, 2, 3, 4, 5), 30.99, "https://hmdk.hr/wp-content/uploads/2019/02/15.jpg", 11));
@@ -67,6 +70,20 @@ namespace WebApp.Controllers
             GradeSpread gradeSpread = new GradeSpread(20, 6, 15, 63, 150);
             //GradeSpread gradeSpread = new GradeSpread(0, 0, 0, 0, 0);
             string opis = "Ovaj restoran ima najukusniju hranu, najbolja vina, i predivnu atmosferu";
+
+
+
+            //while (opis.Length < WebApiApplication.DESCRIPTION_LENGTH)
+            //{
+            //    opis = " " + opis;
+            //}
+            //foreach (var r in WebApiApplication.restaurants)
+            //{
+            //    while (r.RestaurantDetails.Length < WebApiApplication.DESCRIPTION_LENGTH)
+            //    {
+            //        r.RestaurantDetails = " " + r.RestaurantDetails;
+            //    }
+            //}
 
             RestaurantModel restaurant1 = new RestaurantModel("drugi sadfa", opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",3);
             RestaurantModel restaurant2 = new RestaurantModel("treći", opis, hrana, vina, gradeSpread, "https://www.visit-pag.com/photos/tours/thumbs/restaurant-amare-5e03403b1fa96935512841_huge.jpg",4);
@@ -106,7 +123,10 @@ namespace WebApp.Controllers
 
         public ActionResult Registration()
         {
-
+            if (ViewBag.Info == null)
+            {
+                ViewBag.Info = String.Empty;
+            }
             return View("Registration");
         }
         [HttpPost]

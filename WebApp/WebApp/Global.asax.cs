@@ -23,8 +23,11 @@ namespace WebApp
         public static string URL_PATH = "api/restaurant/web";
         public static string URL_LOGIN_PATH = "api/restaurant/web/login";
         public static string URL_REGISTRATION_PATH = "api/restaurant/web/reg";
+        public static string URL_GRADE_UPDATE_PATH = "api/restaurant/web/grade";
+        public static string URL_GENERATE_VID_PATH = "api/restaurant/web/vid";
         public static List<RestaurantModel> restaurants;
         public static List<RestaurantModel> filteredRestaurants;
+        public static int DESCRIPTION_LENGTH = 100;
 
         protected void Application_Start()
         {
@@ -109,7 +112,7 @@ namespace WebApp
             return returnObject;
         }
 
-        public static void BackendPostWithReturnTest<T, X>(T model1,string urlPath)
+        public static void BackendPostWithReturnTest<T, X>(T model1,string urlPath,string xmlPath)
         {
             MemoryStream ms = new MemoryStream();
             XmlWriter writer = XmlWriter.Create(ms);
@@ -123,7 +126,7 @@ namespace WebApp
             //settings.IndentChars = ("\t");
             //settings.OmitXmlDeclaration = true;
             //System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(model1.GetType());
-            //x.Serialize(XmlWriter.Create(urlPath, settings), model1);
+            //x.Serialize(XmlWriter.Create(xmlPath, settings), model1);
 
 
         }

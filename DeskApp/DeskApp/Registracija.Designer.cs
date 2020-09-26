@@ -95,6 +95,7 @@
             // tbRestaurantDetails
             // 
             this.tbRestaurantDetails.Location = new System.Drawing.Point(462, 227);
+            this.tbRestaurantDetails.MaxLength = 100;
             this.tbRestaurantDetails.Name = "tbRestaurantDetails";
             this.tbRestaurantDetails.Size = new System.Drawing.Size(186, 20);
             this.tbRestaurantDetails.TabIndex = 8;

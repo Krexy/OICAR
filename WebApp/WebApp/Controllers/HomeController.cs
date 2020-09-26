@@ -94,29 +94,37 @@ namespace WebApp.Controllers
             List<GradeSpread> WGradeSpread = GetGradeSpread("cbw", model);
 
             int Fcounter = 0;
-            foreach (var food in FGradeSpread)
+            if (FGradeSpread != null)
             {
-                model.Food[Fcounter].Grade.One += food.One;
-                model.Food[Fcounter].Grade.Two += food.Two;
-                model.Food[Fcounter].Grade.Three += food.Three;
-                model.Food[Fcounter].Grade.Four += food.Four;
-                model.Food[Fcounter].Grade.Five += food.Five;
-                Fcounter++;
+
+                foreach (var food in FGradeSpread)
+                {
+                    model.Food[Fcounter].Grade.One += food.One;
+                    model.Food[Fcounter].Grade.Two += food.Two;
+                    model.Food[Fcounter].Grade.Three += food.Three;
+                    model.Food[Fcounter].Grade.Four += food.Four;
+                    model.Food[Fcounter].Grade.Five += food.Five;
+                    Fcounter++;
+                }
             }
 
             int Wcounter = 0;
-            foreach (var wine in WGradeSpread)
+            if (WGradeSpread != null)
             {
-                model.Wine[Wcounter].Grade.One += wine.One;
-                model.Wine[Wcounter].Grade.Two += wine.Two;
-                model.Wine[Wcounter].Grade.Three += wine.Three;
-                model.Wine[Wcounter].Grade.Four += wine.Four;
-                model.Wine[Wcounter].Grade.Five += wine.Five;
-                Wcounter++;
+                foreach (var wine in WGradeSpread)
+                {
+                    model.Wine[Wcounter].Grade.One += wine.One;
+                    model.Wine[Wcounter].Grade.Two += wine.Two;
+                    model.Wine[Wcounter].Grade.Three += wine.Three;
+                    model.Wine[Wcounter].Grade.Four += wine.Four;
+                    model.Wine[Wcounter].Grade.Five += wine.Five;
+                    Wcounter++;
+                }
             }
 
 
-            RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser= new WebUser() { Username = currentUser} };
+
+            RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser = new WebUser() { Username = currentUser } };
 
             //string xmlPath = ControllerContext.HttpContext.Server.MapPath("~/example.xml");
 
@@ -136,31 +144,32 @@ namespace WebApp.Controllers
 
             //foreach (var grade in grades)
             //{
-                switch (grade)
-                {
-                    case "One":
-                        model.Grade.One += 1;
-                        break;
-                    case "Two":
-                        model.Grade.Two += 1;
-                        break;
-                    case "Three":
-                        model.Grade.Three += 1;
-                        break;
-                    case "Four":
-                        model.Grade.Four += 1;
-                        break;
-                    case "Five":
-                        model.Grade.Five += 1;
-                        break;
-                    default:
-                        break;
-                }
+            switch (grade)
+            {
+                case "One":
+                    model.Grade.One += 1;
+                    break;
+                case "Two":
+                    model.Grade.Two += 1;
+                    break;
+                case "Three":
+                    model.Grade.Three += 1;
+                    break;
+                case "Four":
+                    model.Grade.Four += 1;
+                    break;
+                case "Five":
+                    model.Grade.Five += 1;
+                    break;
+                default:
+                    break;
+            }
             //}
         }
 
         private List<GradeSpread> GetGradeSpread(string clue, RestaurantModel model)
         {
+
             List<GradeSpread> finalGradeSpreads = new List<GradeSpread>();
 
             StringBuilder stringBuilder = new StringBuilder();
@@ -168,6 +177,10 @@ namespace WebApp.Controllers
             int prefix = 1;
             if (clue == "cbf")
             {
+                if (model.Food.Count == 0)
+                {
+                    return null;
+                }
                 //umjesto 4 napisi listu hrane iz restorana
                 //for (int i = 0; i < 4; i++)
                 //{
@@ -209,6 +222,10 @@ namespace WebApp.Controllers
                 //    }
 
                 //}
+                if (model.Wine.Count == 0)
+                {
+                    return null;
+                }
                 for (int i = 0; i < model.Wine.Count; i++)
                 {
                     stringBuilder.Append(Request.Form[clue + prefix.ToString()]);

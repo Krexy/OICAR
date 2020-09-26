@@ -12,7 +12,7 @@
     <span class="fa fa-star"></span>*@
 @{decimal nbrReviews = Model.Grade.Five + Model.Grade.Four + Model.Grade.Three + Model.Grade.Two + Model.Grade.One;}
 
-<div>
+<div style="position:relative; left:250px;">
     @if (nbrReviews == 0)
     {
         nbrReviews = 1;
@@ -76,7 +76,7 @@
 
     }*@
 
-<p> Restoran ima @nbrReviews reviewa</p>
+<p style="position: relative; left: 250px; "> Restoran ima @nbrReviews reviewa</p>
 
 
 <hr style="border:3px solid orange;">

@@ -27,8 +27,10 @@ namespace DeskApp.Models
 
         [DataMember(Order = 5)]
         public GradeSpread Grade { get; set; }
+        [DataMember(Order = 6)]
+        public int VID { get; set; }
 
-        public RestaurantModel(string name, string details, List<Food> food, List<Wine> wina, GradeSpread grade, string img)
+        public RestaurantModel(string name, string details, List<Food> food, List<Wine> wina, GradeSpread grade, string img,int vid)
         {
             RestaurantName = name;
             RestaurantDetails = details;
@@ -36,6 +38,7 @@ namespace DeskApp.Models
             Wine = wina;
             Image = img;
             Grade = grade;
+            VID = vid;
         }
 
         public RestaurantModel()

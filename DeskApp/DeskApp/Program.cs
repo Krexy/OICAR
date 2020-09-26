@@ -19,6 +19,7 @@ namespace DeskApp
         public static RestaurantOwner CurrentResturantOwner;
         public static string URL_LOGIN_PATH = "api/restaurant/desktop/login";
         public static string URL_REGISTRATION_PATH = "api/restaurant/desktop/insert";
+        public static string URL_GENERATE_VID_PATH = "api/restaurant/web/vid";
 
 
         /// <summary>
@@ -31,6 +32,8 @@ namespace DeskApp
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+
+
 
         public static Stream BackendConnect<T>(T model, string urlPath)
         {
@@ -62,6 +65,26 @@ namespace DeskApp
         public static X BackendConnectWithReturn<T,X>(T model, string urlPath)
         {
             Stream respStream = BackendConnect<T>(model, urlPath);
+
+            DataContractSerializer serializer2 = new DataContractSerializer(typeof(X));
+            X returnObject = (X)serializer2.ReadObject(respStream);
+
+            return returnObject;
+        }
+
+        public static X GetVid<X>(string urlPath)
+        {
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create($"http://fineoicar.azurewebsites.net/{urlPath}");
+            req.Method = "GET";
+            req.Accept = "application/xml";
+            req.ContentType = "application/xml";
+
+            //Stream reqStream = req.GetRequestStream();
+
+
+            HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+            Stream respStream = resp.GetResponseStream();
+
 
             DataContractSerializer serializer2 = new DataContractSerializer(typeof(X));
             X returnObject = (X)serializer2.ReadObject(respStream);

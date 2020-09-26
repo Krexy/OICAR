@@ -27,16 +27,19 @@ namespace DeskApp
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            int Fvid = Program.GetVid<int>(Program.URL_GENERATE_VID_PATH);
+
             List<Food> hrana = new List<Food>();
-            hrana.Add(new Food("hrana", new GradeSpread(1, 2, 3, 4, 5), 3.2, "hrana nema sliku"));
+            //hrana.Add(new Food("Njoke", new GradeSpread(1, 2, 3, 40, 50), 45.99, "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700%2C636",0));
             List<Wine> vina = new List<Wine>();
-            vina.Add(new Wine("vino", new GradeSpread(1, 2, 3, 4, 5), 3.2, "vino nema sliku"));
+            //vina.Add(new Wine("Riojas", new GradeSpread(1, 2, 3, 49, 150), 450.50, "https://www.chicagotribune.com/resizer/HMeCjL9nZGdSkbNDYr5IPIOSfAA=/1200x675/top/www.trbimg.com/img-5a8d6e51/turbine/ct-1519218254-hmtw3mzmjp-snap-image", 1));
             //Register();
             RestaurantOwner owner = new RestaurantOwner(tbUserName.Text, tbPass.Text,
                                     new RestaurantModel(tbRestaurantName.Text, tbRestaurantDetails.Text, 
                                     hrana, 
                                     vina, 
-                                    new GradeSpread(1,2,3,4,5), "restoran nema slike"));
+                                    new GradeSpread(0,0,0,0,0), "https://www.klikcup.com/images/objects/2022/mlynec-restaurant-2.jpg",
+                                    Program.GetVid<int>(Program.URL_GENERATE_VID_PATH)));
             //System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(owner.GetType());
             //x.Serialize(Console.Out, owner);
             Program.BackendConnect<RestaurantOwner>(owner, Program.URL_REGISTRATION_PATH);

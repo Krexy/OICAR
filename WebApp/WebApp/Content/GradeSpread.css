@@ -1,9 +1,24 @@
 ﻿.Graded {
-    color: green;
-    transform: rotateY(180deg) translateY(320px);
-    font-size: 1.5em;
+    color: orange;
+    transform: rotateY(180deg) translateY(310px);
+    font-size: 1.3em;
     font-weight: 800;
     font-family: Segoe Script;
+}
+#gradedid {
+    /*padding: 0 10px  0 10px ;*/
+    padding: 0;
+    margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 40px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #3e3e3eba;
+    box-shadow: inset 5px 7px 10px rgba(255, 255, 255, 0.83), /*bottom external highlight*/
+    inset -10px -5px 5px rgba(102, 102, 102, 0.29), /*top external shadow*/
+    0 10px 18px 0 rgba(0, 0, 0, 0.2), 20px 16px 20px 0 rgba(0, 0, 0, 1);
 }
 
 #restaurantDetailsBG {

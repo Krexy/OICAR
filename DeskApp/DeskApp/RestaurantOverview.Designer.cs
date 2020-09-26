@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RestaurantOverview));
             this.btnSignOut = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,6 +53,7 @@
             // 
             // btnSignOut
             // 
+            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSignOut.Font = new System.Drawing.Font("Segoe Script", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnSignOut.Location = new System.Drawing.Point(18, 587);
@@ -113,6 +116,7 @@
             // 
             // btnUpdate
             // 
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe Script", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnUpdate.Location = new System.Drawing.Point(608, 587);
@@ -125,27 +129,49 @@
             // 
             // dgvFood
             // 
+            this.dgvFood.BackgroundColor = System.Drawing.Color.SandyBrown;
+            this.dgvFood.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFood.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.hFName,
             this.hFPrice,
             this.hFImage});
             this.dgvFood.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvFood.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvFood.Location = new System.Drawing.Point(0, 0);
             this.dgvFood.Name = "dgvFood";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFood.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFood.Size = new System.Drawing.Size(786, 150);
             this.dgvFood.TabIndex = 23;
             // 
             // dgvWine
             // 
+            this.dgvWine.BackgroundColor = System.Drawing.Color.BurlyWood;
+            this.dgvWine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvWine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dgvWine.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvWine.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvWine.Location = new System.Drawing.Point(0, 150);
             this.dgvWine.Name = "dgvWine";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Coral;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWine.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvWine.Size = new System.Drawing.Size(786, 150);
             this.dgvWine.TabIndex = 24;
             // 

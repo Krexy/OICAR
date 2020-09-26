@@ -152,7 +152,7 @@ namespace DeskApp
 
 
             Program.BackendConnect<RestaurantOwner>(Program.CurrentResturantOwner, Program.URL_REGISTRATION_PATH);
-            MessageBox.Show("Podaci Uspješno Ažurirani!");
+            MessageBox.Show(this,"Podaci Uspješno Ažurirani!");
         }
     }
 }

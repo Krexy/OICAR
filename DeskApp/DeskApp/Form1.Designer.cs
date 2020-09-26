@@ -39,6 +39,7 @@
             // 
             // btnRegister
             // 
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegister.Font = new System.Drawing.Font("Segoe Script", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnRegister.Location = new System.Drawing.Point(418, 311);
@@ -51,6 +52,7 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLogin.Font = new System.Drawing.Font("Segoe Script", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnLogin.Location = new System.Drawing.Point(198, 311);
@@ -74,6 +76,7 @@
             // 
             this.tbLoginPass.Location = new System.Drawing.Point(317, 235);
             this.tbLoginPass.Name = "tbLoginPass";
+            this.tbLoginPass.PasswordChar = '*';
             this.tbLoginPass.Size = new System.Drawing.Size(186, 20);
             this.tbLoginPass.TabIndex = 8;
             // 
@@ -108,7 +111,7 @@
             this.Controls.Add(this.btnRegister);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "FINE";
             this.ResumeLayout(false);
             this.PerformLayout();
 

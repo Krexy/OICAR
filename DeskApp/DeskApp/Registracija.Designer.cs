@@ -38,10 +38,12 @@
             this.tbRestaurantDetails = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbRestaurantName = new System.Windows.Forms.TextBox();
+            this.btnOdustani = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConfirm
             // 
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe Script", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnConfirm.Location = new System.Drawing.Point(462, 342);
@@ -81,6 +83,7 @@
             // 
             this.tbPass.Location = new System.Drawing.Point(180, 227);
             this.tbPass.Name = "tbPass";
+            this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(186, 20);
             this.tbPass.TabIndex = 4;
             // 
@@ -117,12 +120,26 @@
             this.tbRestaurantName.Size = new System.Drawing.Size(186, 20);
             this.tbRestaurantName.TabIndex = 6;
             // 
+            // btnOdustani
+            // 
+            this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOdustani.Font = new System.Drawing.Font("Segoe Script", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOdustani.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnOdustani.Location = new System.Drawing.Point(180, 342);
+            this.btnOdustani.Name = "btnOdustani";
+            this.btnOdustani.Size = new System.Drawing.Size(157, 65);
+            this.btnOdustani.TabIndex = 10;
+            this.btnOdustani.Text = "Odustani";
+            this.btnOdustani.UseVisualStyleBackColor = true;
+            this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
+            // 
             // Registracija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::DeskApp.Properties.Resources._42149_food_fine_food_and_wine;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbRestaurantDetails);
             this.Controls.Add(this.label2);
@@ -150,5 +167,6 @@
         private System.Windows.Forms.TextBox tbRestaurantDetails;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbRestaurantName;
+        private System.Windows.Forms.Button btnOdustani;
     }
 }

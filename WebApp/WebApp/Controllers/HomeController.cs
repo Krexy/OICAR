@@ -106,14 +106,17 @@ namespace WebApp.Controllers
             //            postfix++;
             //        }
             //    }
-            SetRestaurantGradeSpread("cbr", model);
+            bool rest = SetRestaurantGradeSpread("cbr", model);
             List<GradeSpread> FGradeSpread = GetGradeSpread("cbf", model);
             List<GradeSpread> WGradeSpread = GetGradeSpread("cbw", model);
 
 
             List<string> vidslist = new List<string>();
-            vidslist.Add(rVID.ToString());
+            //if (rVID != -1)
+            //{
+            //    vidslist.Add(rVID.ToString());
 
+            //}
             int Fcounter = 0;
             if (FGradeSpread != null)
             {
@@ -151,7 +154,7 @@ namespace WebApp.Controllers
                     Wcounter++;
                 }
             }
-            string finalVIDS = rVID== -1 ? String.Empty: rVID.ToString() + ",";
+            string finalVIDS = rest== true ? rVID.ToString() + "," : String.Empty;
             //vidslist.ForEach(v=>finalVIDS.Join(",",v.ToString()));
             foreach (var v in vidslist)
             {
@@ -168,7 +171,16 @@ namespace WebApp.Controllers
 
 
             }
-            finalVIDS = finalVIDS.Remove(finalVIDS.Length - 1);
+            if (Session["VIDs"] as String != String.Empty)
+            {
+                finalVIDS = Session["VIDs"] as String + "," + finalVIDS;
+            }
+            if (finalVIDS.Length>0)
+            {
+                finalVIDS = finalVIDS.Remove(finalVIDS.Length - 1);
+            }
+            Session["VIDs"] = finalVIDS;
+            //string test = Session["VIDs"] as String;
 
             RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser = new WebUser() { Username = currentUser, VIDs = finalVIDS } };
 
@@ -181,7 +193,6 @@ namespace WebApp.Controllers
 
             HelperModel helperModel = WebApiApplication.currentHelperModel;
             helperModel.RestaurantModel = model;
-            helperModel.VIDs.Add(rVID);
             if (finalVIDS != String.Empty)
             {
                 List<String> VIDstrings = finalVIDS.Split(',').ToList();
@@ -192,7 +203,7 @@ namespace WebApp.Controllers
             return View("RestaurantDetails", helperModel);
         }
 
-        private void SetRestaurantGradeSpread(string clue, RestaurantModel model)
+        private bool SetRestaurantGradeSpread(string clue, RestaurantModel model)
         {
 
             String grade = Request.Form[clue];
@@ -204,21 +215,26 @@ namespace WebApp.Controllers
             {
                 case "One":
                     model.Grade.One += 1;
-                    break;
+                    return true;
                 case "Two":
                     model.Grade.Two += 1;
-                    break;
+                    return true;
+
                 case "Three":
                     model.Grade.Three += 1;
-                    break;
+                    return true;
+
                 case "Four":
                     model.Grade.Four += 1;
-                    break;
+                    return true;
+
                 case "Five":
                     model.Grade.Five += 1;
-                    break;
+                    return true;
+
                 default:
-                    break;
+                    return false;
+
             }
             //}
         }

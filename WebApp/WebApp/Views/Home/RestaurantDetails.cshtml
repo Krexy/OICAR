@@ -45,7 +45,7 @@
                     @Html.RadioButton("cbr", "One", new { id = "cbr5", disabled = "disabled" })
                     <label for="cbr5"></label>*@
 
-                    <h2 style="color:green;transform:rotateY(180deg);margin-top:16px;font-family:Segoe Script;">Restoran Ocijenjen!</h2>
+                    <h2 id="gradedid" class="jumbotron"  style="color:orange;transform:rotateY(180deg);margin-top:16px;font-family:Segoe Script;">Restoran Ocijenjen!</h2>
                 </div>
             }
             else
@@ -125,7 +125,7 @@
                             }
                             else
                             {
-                                <span class="Graded">Predmet Ocijenjen!</span>
+                                <span id="gradedid" class="Graded jumbotron">Predmet Ocijenjen!</span>
 
                                 @*@Html.RadioButton("cbf" + prefix.ToString(), "Five", false, new { id = "cbf" + i.ToString() + postfix.ToString(), disabled = "disabled" })
                                     <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
@@ -207,7 +207,7 @@
                             }
                             else
                             {
-                                <span class="Graded">Predmet Ocijenjen!</span>
+                                <span id="gradedid" class="Graded jumbotron">Predmet Ocijenjen!</span>
                                 @*@Html.RadioButton("cbw" + prefix.ToString(), "Five", false, new { id = "cbw" + i.ToString() + postfix.ToString(), disabled = "disabled" })
                                     <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
                                     postfix++;

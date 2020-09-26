@@ -54,6 +54,12 @@ namespace DeskApp
 
         }
 
+        private void btnOdustani_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Program.previousForm.Show();
+        }
+
         //private void Register()
         //{
         //RestaurantOwner owner = new RestaurantOwner(tbUserName.Text, tbPass.Text,

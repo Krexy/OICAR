@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="FineDb-Web.config Connection String" description="FineDb Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:fineserver.database.windows.net,1433;Initial Catalog=fine;Persist Security Info=False;User ID=fine;Password=oicar2020!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\jankn\\source\\repos\\FineRestAPI\\FineRestAPI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FineDb']/@connectionString" />
+  </parameter>
+</parameters>

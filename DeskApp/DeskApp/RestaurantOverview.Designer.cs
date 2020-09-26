@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RestaurantOverview));
             this.btnSignOut = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbRestaurantDetails = new System.Windows.Forms.TextBox();
@@ -129,9 +130,10 @@
             this.hFName,
             this.hFPrice,
             this.hFImage});
-            this.dgvFood.Location = new System.Drawing.Point(2, 12);
+            this.dgvFood.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvFood.Location = new System.Drawing.Point(0, 0);
             this.dgvFood.Name = "dgvFood";
-            this.dgvFood.Size = new System.Drawing.Size(763, 150);
+            this.dgvFood.Size = new System.Drawing.Size(786, 150);
             this.dgvFood.TabIndex = 23;
             // 
             // dgvWine
@@ -141,9 +143,10 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            this.dgvWine.Location = new System.Drawing.Point(2, 208);
+            this.dgvWine.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvWine.Location = new System.Drawing.Point(0, 150);
             this.dgvWine.Name = "dgvWine";
-            this.dgvWine.Size = new System.Drawing.Size(763, 150);
+            this.dgvWine.Size = new System.Drawing.Size(786, 150);
             this.dgvWine.TabIndex = 24;
             // 
             // hFName
@@ -200,6 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::DeskApp.Properties.Resources._42149_food_fine_food_and_wine;
             this.ClientSize = new System.Drawing.Size(786, 670);
             this.Controls.Add(this.dgvWine);
             this.Controls.Add(this.dgvFood);
@@ -211,6 +215,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbRestaurantName);
             this.Controls.Add(this.btnSignOut);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RestaurantOverview";
             this.Text = "RestaurantOverview";
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).EndInit();

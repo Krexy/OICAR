@@ -27,6 +27,7 @@ namespace WebApp
         public static string URL_GENERATE_VID_PATH = "api/restaurant/web/vid";
         public static List<RestaurantModel> restaurants;
         public static List<RestaurantModel> filteredRestaurants;
+        public static HelperModel currentHelperModel;
         public static int DESCRIPTION_LENGTH = 100;
 
         protected void Application_Start()

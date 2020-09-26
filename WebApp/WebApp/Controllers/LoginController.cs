@@ -53,8 +53,18 @@ namespace WebApp.Controllers
             }
             WebApiApplication.restaurants = combo.RestaurantModels;
 
-            Session["username"] = user.Username;
-          
+            Session["username"] = combo.WebUser.Username;
+            if (combo.WebUser.VIDs == null)
+            {
+                Session["VIDs"] = String.Empty;
+
+            }
+            else
+            {
+                Session["VIDs"] = combo.WebUser.VIDs;
+
+            }
+
 
             List<Food> hrana = new List<Food>();
             hrana.Add(new Food("Jetrica", new GradeSpread(1, 2, 3, 4, 5), 30.99, "https://hmdk.hr/wp-content/uploads/2019/02/15.jpg", 11));

@@ -1,4 +1,4 @@
-﻿@model WebApp.Models.RestaurantModel
+﻿@model WebApp.Models.HelperModel
 
 @{
     ViewBag.Title = "Restaurant Details";
@@ -20,32 +20,52 @@
     <title>@WebApp.Resources.DefaultLanguage.RestaurantDetails</title>
 </head>
 <body id="restaurantDetailsBG">
-    @using (Html.BeginForm("UpdateGrade", "Home", new { RestaurantName = Model.RestaurantName }, FormMethod.Post, null))
+    @using (Html.BeginForm("UpdateGrade", "Home", new { RestaurantName = Model.RestaurantModel.RestaurantName, rVID = Model.VIDs.Contains(Model.RestaurantModel.VID) ? -1 : Model.RestaurantModel.VID }, FormMethod.Post, null))
     {
         <div id="idHeader" class="restaurantHeader jumbotron">
-            <img src='@Model.Image' />
+            <img src='@Model.RestaurantModel.Image' />
             <br />
             <br />
             <hr style="border:3px solid orange;">
-            <label class="Title">@Model.RestaurantName</label>
+            <label class="Title">@Model.RestaurantModel.RestaurantName</label>
 
-            @RenderPage("~/Views/Shared/GradeView.cshtml", Model)
+            @RenderPage("~/Views/Shared/GradeView.cshtml", Model.RestaurantModel)
             @*<a href="javascript:void(0);" onclick="history.go(-1);">GO Back</a>*@
+            @if (Model.VIDs.Contains(Model.RestaurantModel.VID))
+            {
+                <div class="rrating">
+                    @*@Html.RadioButton("cbr", "Five", false, new { id = "cbr1", disabled = "disabled" })
+                    <label for="cbr1"></label>
+                    @Html.RadioButton("cbr", "Four", new { id = "cbr2", disabled = "disabled" })
+                    <label for="cbr2"></label>
+                    @Html.RadioButton("cbr", "Three", new { id = "cbr3", disabled = "disabled" })
+                    <label for="cbr3"></label>
+                    @Html.RadioButton("cbr", "Two", new { id = "cbr4", disabled = "disabled" })
+                    <label for="cbr4"></label>
+                    @Html.RadioButton("cbr", "One", new { id = "cbr5", disabled = "disabled" })
+                    <label for="cbr5"></label>*@
 
-            <div class="rrating">
-                @Html.RadioButton("cbr", "Five", false, new { id = "cbr1" })
-                <label for="cbr1"></label>
-                @Html.RadioButton("cbr", "Four", new { id = "cbr2" })
-                <label for="cbr2"></label>
-                @Html.RadioButton("cbr", "Three", new { id = "cbr3" })
-                <label for="cbr3"></label>
-                @Html.RadioButton("cbr", "Two", new { id = "cbr4" })
-                <label for="cbr4"></label>
-                @Html.RadioButton("cbr", "One", new { id = "cbr5" })
-                <label for="cbr5"></label>
+                    <h2 style="color:green;transform:rotateY(180deg);margin-top:16px;font-family:Segoe Script;">Restoran Ocijenjen!</h2>
+                </div>
+            }
+            else
+            {
+                <div class="rrating">
+                    @Html.RadioButton("cbr", "Five", false, new { id = "cbr1" })
+                    <label for="cbr1"></label>
+                    @Html.RadioButton("cbr", "Four", new { id = "cbr2" })
+                    <label for="cbr2"></label>
+                    @Html.RadioButton("cbr", "Three", new { id = "cbr3" })
+                    <label for="cbr3"></label>
+                    @Html.RadioButton("cbr", "Two", new { id = "cbr4" })
+                    <label for="cbr4"></label>
+                    @Html.RadioButton("cbr", "One", new { id = "cbr5" })
+                    <label for="cbr5"></label>
 
-                <h2 style="color:white;transform:rotateY(180deg);margin-top:16px;">Ocijeni Restoran: &nbsp;&nbsp;</h2>
-            </div>
+                    <h2 style="color:white;transform:rotateY(180deg);margin-top:16px;">Ocijeni Restoran: &nbsp;&nbsp;</h2>
+                </div>
+            }
+
         </div>
 
         <h1 id="detailsCard" style="position:relative; color:white;transform:rotateX(0deg);animation:none;left:-15%;text-align:center;" class="jumbotron">Ocijeni Jela:</h1>
@@ -57,50 +77,81 @@
             <div class="row">
                 @{ int postfix = 1;}
                 @{ int prefix = 1;}
-                @{ for (int i = 0; i < Model.Food.Count; i++)
+                @{ for (int i = 0; i < Model.RestaurantModel.Food.Count; i++)
                     {
                         //if( WebApp.Models.WebUser.VID.Contains( contains  Model.Food[i].VID ))
 
                         <div id="detailsCard" class="rating jumbotron col-lg-1">
-                            <span class="detailsTitle">@Model.Food[i].Name</span>
+                            <span class="detailsTitle">@Model.RestaurantModel.Food[i].Name</span>
 
-                            <img src="@Model.Food[i].Image" class="foodImg" style="height:40%;" />
+                            <img src="@Model.RestaurantModel.Food[i].Image" class="foodImg" style="height:40%;" />
 
-                            <span class="detailsPrice">@Model.Food[i].Price kn</span>
+                            <span class="detailsPrice">@Model.RestaurantModel.Food[i].Price kn</span>
 
-                            @{decimal nbrReviews = Model.Food[i].Grade.Five + Model.Food[i].Grade.Four + Model.Food[i].Grade.Three + Model.Food[i].Grade.Two + Model.Food[i].Grade.One;}
-                            @if(nbrReviews == 0)
+                            @{decimal nbrReviews = Model.RestaurantModel.Food[i].Grade.Five + Model.RestaurantModel.Food[i].Grade.Four + Model.RestaurantModel.Food[i].Grade.Three + Model.RestaurantModel.Food[i].Grade.Two + Model.RestaurantModel.Food[i].Grade.One;}
+                            @if (nbrReviews == 0)
                             {
                                 nbrReviews = 1;
                             }
-                            @{decimal sum = 5 * Model.Food[i].Grade.Five + 4 * Model.Food[i].Grade.Four + 3 * Model.Food[i].Grade.Three + 2 * Model.Food[i].Grade.Two + Model.Food[i].Grade.One;}
+                            @{decimal sum = 5 * Model.RestaurantModel.Food[i].Grade.Five + 4 * Model.RestaurantModel.Food[i].Grade.Four + 3 * Model.RestaurantModel.Food[i].Grade.Three + 2 * Model.RestaurantModel.Food[i].Grade.Two + Model.RestaurantModel.Food[i].Grade.One;}
                             @{decimal average = Math.Round(sum / nbrReviews, 2);}
                             @{decimal intPart = Math.Truncate(average); decimal DecimalPart = (average - intPart) * 100;}
                             <span class="detailsReview">Prosječna Ocjena: @String.Format("{0},{1}/5", Math.Truncate(average), Math.Truncate(DecimalPart))</span>
 
+                            @if (!Model.VIDs.Contains(Model.RestaurantModel.Food[i].VID))
+                            {
+                                @Html.RadioButton("cbf" + prefix.ToString(), "Five", false, new { id = "cbf" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
 
-                            @Html.RadioButton("cbf" + prefix.ToString(), "Five", false, new { id = "cbf" + i.ToString() + postfix.ToString() })
-                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
-                            @{postfix++; }
+                                @Html.RadioButton("cbf" + prefix.ToString(), "Four", new { id = "cbf" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
 
-                            @Html.RadioButton("cbf" + prefix.ToString(), "Four", new { id = "cbf" + i.ToString() + postfix.ToString() })
-                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
-                            @{postfix++; }
+                                @Html.RadioButton("cbf" + prefix.ToString(), "Three", new { id = "cbf" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
 
-                            @Html.RadioButton("cbf" + prefix.ToString(), "Three", new { id = "cbf" + i.ToString() + postfix.ToString() })
-                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
-                            @{postfix++; }
+                                @Html.RadioButton("cbf" + prefix.ToString(), "Two", new { id = "cbf" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
 
-                            @Html.RadioButton("cbf" + prefix.ToString(), "Two", new { id = "cbf" + i.ToString() + postfix.ToString() })
-                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
-                            @{postfix++; }
-
-                            @Html.RadioButton("cbf" + prefix.ToString(), "One", new { id = "cbf" + i.ToString() + postfix.ToString() })
-                            <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
-                            @{postfix++; }
+                                @Html.RadioButton("cbf" + prefix.ToString(), "One", new { id = "cbf" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
 
 
-                            @{prefix++; }
+                                prefix++;
+                            }
+                            else
+                            {
+                                <span class="Graded">Predmet Ocijenjen!</span>
+
+                                @*@Html.RadioButton("cbf" + prefix.ToString(), "Five", false, new { id = "cbf" + i.ToString() + postfix.ToString(), disabled = "disabled" })
+                                    <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                    postfix++;
+
+                                    @Html.RadioButton("cbf" + prefix.ToString(), "Four", new { id = "cbf" + i.ToString() + postfix.ToString(), disabled = "disabled" })
+                                    <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                    postfix++;
+
+                                    @Html.RadioButton("cbf" + prefix.ToString(), "Three", new { id = "cbf" + i.ToString() + postfix.ToString(), disabled = "disabled" })
+                                    <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                    postfix++;
+
+                                    @Html.RadioButton("cbf" + prefix.ToString(), "Two", new { id = "cbf" + i.ToString() + postfix.ToString(), disabled = "disabled" })
+                                    <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                    postfix++;
+
+                                    @Html.RadioButton("cbf" + prefix.ToString(), "One", new { id = "cbf" + i.ToString() + postfix.ToString(), disabled = "disabled" })
+                                    <label for='@String.Format("cbf{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                    postfix++;
+
+
+                                    prefix++;*@
+                            }
+
+
                         </div>
 
                         <br />
@@ -111,47 +162,78 @@
 
                 @{ postfix = 1;}
                 @{ prefix = 1;}
-                @{ for (int i = 0; i < Model.Wine.Count; i++)
+                @{ for (int i = 0; i < Model.RestaurantModel.Wine.Count; i++)
                     {
-                                <div id="detailsCard" class="rating jumbotron col-lg-6">
-                                    <span class="detailsTitle">@Model.Wine[i].Name</span>
+                        <div id="detailsCard" class="rating jumbotron col-lg-6">
+                            <span class="detailsTitle">@Model.RestaurantModel.Wine[i].Name</span>
 
-                                    <img src="@Model.Wine[i].Image" class="foodImg" style="height:40%;" />
+                            <img src="@Model.RestaurantModel.Wine[i].Image" class="foodImg" style="height:40%;" />
 
-                                    <span class="detailsPrice">@Model.Wine[i].Price kn</span>
+                            <span class="detailsPrice">@Model.RestaurantModel.Wine[i].Price kn</span>
 
-                                    @{decimal nbrReviews = Model.Wine[i].Grade.Five + Model.Wine[i].Grade.Four + Model.Wine[i].Grade.Three + Model.Wine[i].Grade.Two + Model.Wine[i].Grade.One;}
-                                    @if (nbrReviews == 0)
-                                    {
-                                        nbrReviews = 1;
-                                    }
-                                    @{decimal sum = 5 * Model.Wine[i].Grade.Five + 4 * Model.Wine[i].Grade.Four + 3 * Model.Wine[i].Grade.Three + 2 * Model.Wine[i].Grade.Two + Model.Wine[i].Grade.One;}
-                                    @{decimal average = Math.Round(sum / nbrReviews, 2);}
-                                    @{decimal intPart = Math.Truncate(average); decimal DecimalPart = (average - intPart) * 100;}
-                                    <span class="detailsReview">Prosječna Ocjena: @String.Format("{0},{1}/5", Math.Truncate(average), Math.Truncate(DecimalPart))</span>
+                            @{decimal nbrReviews = Model.RestaurantModel.Wine[i].Grade.Five + Model.RestaurantModel.Wine[i].Grade.Four + Model.RestaurantModel.Wine[i].Grade.Three + Model.RestaurantModel.Wine[i].Grade.Two + Model.RestaurantModel.Wine[i].Grade.One;}
+                            @if (nbrReviews == 0)
+                            {
+                                nbrReviews = 1;
+                            }
+                            @{decimal sum = 5 * Model.RestaurantModel.Wine[i].Grade.Five + 4 * Model.RestaurantModel.Wine[i].Grade.Four + 3 * Model.RestaurantModel.Wine[i].Grade.Three + 2 * Model.RestaurantModel.Wine[i].Grade.Two + Model.RestaurantModel.Wine[i].Grade.One;}
+                            @{decimal average = Math.Round(sum / nbrReviews, 2);}
+                            @{decimal intPart = Math.Truncate(average); decimal DecimalPart = (average - intPart) * 100;}
+                            <span class="detailsReview">Prosječna Ocjena: @String.Format("{0},{1}/5", Math.Truncate(average), Math.Truncate(DecimalPart))</span>
 
-                                    @Html.RadioButton("cbw" + prefix.ToString(), "Five", false, new { id = "cbw" + i.ToString() + postfix.ToString() })
+
+                            @if (!Model.VIDs.Contains(Model.RestaurantModel.Wine[i].VID))
+                            {
+                                @Html.RadioButton("cbw" + prefix.ToString(), "Five", false, new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
+                                @Html.RadioButton("cbw" + prefix.ToString(), "Four", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
+
+                                @Html.RadioButton("cbw" + prefix.ToString(), "Three", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
+
+                                @Html.RadioButton("cbw" + prefix.ToString(), "Two", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
+
+                                @Html.RadioButton("cbw" + prefix.ToString(), "One", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
+                                postfix++;
+
+                                prefix++;
+                            }
+                            else
+                            {
+                                <span class="Graded">Predmet Ocijenjen!</span>
+                                @*@Html.RadioButton("cbw" + prefix.ToString(), "Five", false, new { id = "cbw" + i.ToString() + postfix.ToString(), disabled = "disabled" })
                                     <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
-                                    @{postfix++; }
-                                    @Html.RadioButton("cbw" + prefix.ToString(), "Four", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                    postfix++;
+                                    @Html.RadioButton("cbw" + prefix.ToString(), "Four", new { id = "cbw" + i.ToString() + postfix.ToString(), disabled = "disabled" })
                                     <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
-                                    @{postfix++; }
+                                    postfix++;
 
-                                    @Html.RadioButton("cbw" + prefix.ToString(), "Three", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                    @Html.RadioButton("cbw" + prefix.ToString(), "Three", new { id = "cbw" + i.ToString() + postfix.ToString(), disabled = "disabled" })
                                     <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
-                                    @{postfix++; }
+                                    postfix++;
 
-                                    @Html.RadioButton("cbw" + prefix.ToString(), "Two", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                    @Html.RadioButton("cbw" + prefix.ToString(), "Two", new { id = "cbw" + i.ToString() + postfix.ToString(), disabled = "disabled" })
                                     <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
-                                    @{postfix++; }
+                                    postfix++;
 
-                                    @Html.RadioButton("cbw" + prefix.ToString(), "One", new { id = "cbw" + i.ToString() + postfix.ToString() })
+                                    @Html.RadioButton("cbw" + prefix.ToString(), "One", new { id = "cbw" + i.ToString() + postfix.ToString(), disabled = "disabled" })
                                     <label for='@String.Format("cbw{0}{1}", i.ToString(), postfix.ToString())'></label>
-                                    @{postfix++; }
+                                    postfix++;
 
-                                    @{prefix++; }
+                                    prefix++;*@
+                            }
 
-                                </div>
+
+
+
+                        </div>
 
                         <br />
                     }}
@@ -170,5 +252,6 @@
         </div>
 
     }
+    @{ WebApiApplication.currentHelperModel = Model;}
 </body>
 </html>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registracija));
             this.btnConfirm = new System.Windows.Forms.Button();
             this.tbUserName = new System.Windows.Forms.TextBox();
             this.lblUserName = new System.Windows.Forms.Label();
@@ -120,6 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::DeskApp.Properties.Resources._42149_food_fine_food_and_wine;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbRestaurantDetails);
@@ -130,6 +132,7 @@
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.btnConfirm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Registracija";
             this.Text = "Registracija";
             this.ResumeLayout(false);

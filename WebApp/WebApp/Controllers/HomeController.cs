@@ -60,7 +60,24 @@ namespace WebApp.Controllers
 
             if (WebApiApplication.LOGED_IN && name != null)
             {
-                return View("RestaurantDetails", WebApiApplication.restaurants.Where(r => r.RestaurantName == name).FirstOrDefault());
+                List<int> VIDints = new List<int>();
+                HelperModel helperModel = new HelperModel()
+                {
+                    RestaurantModel = WebApiApplication.restaurants.Where(r => r.RestaurantName == name).FirstOrDefault(),
+                    VIDs = VIDints
+                };
+                string VIDs = Session["VIDs"] as String;
+                if (VIDs != String.Empty)
+                {
+                    List<String> VIDstrings = VIDs.Split(',').ToList();
+                    VIDstrings.ForEach(v => VIDints.Add(int.Parse(v)));
+                    helperModel.VIDs = VIDints;
+                    return View("RestaurantDetails", helperModel);
+
+                }
+
+                return View("RestaurantDetails", helperModel);
+
             }
             else
             {
@@ -68,7 +85,7 @@ namespace WebApp.Controllers
             }
         }
 
-        public ActionResult UpdateGrade(string RestaurantName)
+        public ActionResult UpdateGrade(string RestaurantName, int rVID)
         {
             string currentUser = Session["username"] as String;
             RestaurantModel model = WebApiApplication.restaurants.Where(r => r.RestaurantName == RestaurantName).FirstOrDefault();
@@ -93,6 +110,10 @@ namespace WebApp.Controllers
             List<GradeSpread> FGradeSpread = GetGradeSpread("cbf", model);
             List<GradeSpread> WGradeSpread = GetGradeSpread("cbw", model);
 
+
+            List<string> vidslist = new List<string>();
+            vidslist.Add(rVID.ToString());
+
             int Fcounter = 0;
             if (FGradeSpread != null)
             {
@@ -104,6 +125,10 @@ namespace WebApp.Controllers
                     model.Food[Fcounter].Grade.Three += food.Three;
                     model.Food[Fcounter].Grade.Four += food.Four;
                     model.Food[Fcounter].Grade.Five += food.Five;
+                    if (!(food.Five == 0 && food.Four == 0 && food.Three == 0 && food.Two == 0 && food.One == 0))
+                    {
+                        vidslist.Add(model.Food[Fcounter].VID.ToString());
+                    }
                     Fcounter++;
                 }
             }
@@ -118,22 +143,53 @@ namespace WebApp.Controllers
                     model.Wine[Wcounter].Grade.Three += wine.Three;
                     model.Wine[Wcounter].Grade.Four += wine.Four;
                     model.Wine[Wcounter].Grade.Five += wine.Five;
+                    if (!(wine.Five == 0 && wine.Four == 0 && wine.Three == 0 && wine.Two == 0 && wine.One == 0))
+                    {
+                        vidslist.Add(model.Wine[Wcounter].VID.ToString());
+
+                    }
                     Wcounter++;
                 }
             }
+            string finalVIDS = rVID== -1 ? String.Empty: rVID.ToString() + ",";
+            //vidslist.ForEach(v=>finalVIDS.Join(",",v.ToString()));
+            foreach (var v in vidslist)
+            {
+                //if (finalVIDS == String.Empty)
+                //{
+                //    finalVIDS += v.ToString() + ",";
+
+                //}
+                //else
+                //{
+                //    finalVIDS += v.ToString() + ",";
+                //}
+                finalVIDS += v.ToString() + ",";
 
 
+            }
+            finalVIDS = finalVIDS.Remove(finalVIDS.Length - 1);
 
-            RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser = new WebUser() { Username = currentUser } };
+            RestaurantUserCombo restaurantUserCombo = new RestaurantUserCombo() { RestaurantModel = model, WebUser = new WebUser() { Username = currentUser, VIDs = finalVIDS } };
 
             //string xmlPath = ControllerContext.HttpContext.Server.MapPath("~/example.xml");
 
-            WebApiApplication.BackendPostWithReturn<RestaurantUserCombo, RestaurantsUserCombo>(restaurantUserCombo, WebApiApplication.URL_GRADE_UPDATE_PATH);
-            //Session["username"] = return_value.WebUser.Username;
-            //WebApiApplication.restaurants = return_value.RestaurantModels;
+            RestaurantsUserCombo restaurantsUserCombo =  WebApiApplication.BackendPostWithReturn<RestaurantUserCombo, RestaurantsUserCombo>(restaurantUserCombo, WebApiApplication.URL_GRADE_UPDATE_PATH);
+            Session["username"] = restaurantsUserCombo.WebUser.Username;
+            WebApiApplication.restaurants = restaurantsUserCombo.RestaurantModels;
             WebApiApplication.filteredRestaurants = WebApiApplication.restaurants;
 
-            return View("RestaurantDetails", model);
+            HelperModel helperModel = WebApiApplication.currentHelperModel;
+            helperModel.RestaurantModel = model;
+            helperModel.VIDs.Add(rVID);
+            if (finalVIDS != String.Empty)
+            {
+                List<String> VIDstrings = finalVIDS.Split(',').ToList();
+                VIDstrings.ForEach(v => helperModel.VIDs.Add(int.Parse(v)));
+
+            }
+
+            return View("RestaurantDetails", helperModel);
         }
 
         private void SetRestaurantGradeSpread(string clue, RestaurantModel model)

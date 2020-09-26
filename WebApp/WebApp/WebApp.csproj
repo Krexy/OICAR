@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\GradeSpread.cs" />
+    <Compile Include="Models\HelperModel.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\RestaurantModel.cs" />
     <Compile Include="Models\RestaurantsUserCombo.cs" />

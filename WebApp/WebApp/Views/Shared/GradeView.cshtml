@@ -1,4 +1,4 @@
-﻿@model WebApp.Models.RestaurantModel
+﻿@model WebApp.Models.HelperModel
 
 @{
     Layout = null;
@@ -10,7 +10,7 @@
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star"></span>*@
-@{decimal nbrReviews = Model.Grade.Five + Model.Grade.Four + Model.Grade.Three + Model.Grade.Two + Model.Grade.One;}
+@{decimal nbrReviews = Model.RestaurantModel.Grade.Five + Model.RestaurantModel.Grade.Four + Model.RestaurantModel.Grade.Three + Model.RestaurantModel.Grade.Two + Model.RestaurantModel.Grade.One;}
 
 <div style="position:relative; left:250px;">
     @if (nbrReviews == 0)
@@ -18,7 +18,7 @@
         nbrReviews = 1;
     }
 
-    @{decimal sum = 5 * Model.Grade.Five + 4 * Model.Grade.Four + 3 * Model.Grade.Three + 2 * Model.Grade.Two + Model.Grade.One;}
+    @{decimal sum = 5 * Model.RestaurantModel.Grade.Five + 4 * Model.RestaurantModel.Grade.Four + 3 * Model.RestaurantModel.Grade.Three + 2 * Model.RestaurantModel.Grade.Two + Model.RestaurantModel.Grade.One;}
     @{decimal average = Math.Round(sum / nbrReviews, 2);}
     @{decimal intPart = Math.Truncate(average); decimal DecimalPart = (average - intPart) * 100; int counter = 5;}
     @Html.Label("Korisničko zadovoljstov: ", htmlAttributes: new { @class = " text-center", style = "font-family:'Poppins',sans-serif; color:#ffffff99;" })
@@ -52,7 +52,7 @@
 
 </div>
 
-@{nbrReviews = Model.Grade.Five + Model.Grade.Four + Model.Grade.Three + Model.Grade.Two + Model.Grade.One;}
+@{nbrReviews = Model.RestaurantModel.Grade.Five + Model.RestaurantModel.Grade.Four + Model.RestaurantModel.Grade.Three + Model.RestaurantModel.Grade.Two + Model.RestaurantModel.Grade.One;}
 
 @*@if (nbrReviews == 0)
     {
@@ -85,11 +85,11 @@
 {
     nbrReviews = 1;
 }
-@{ decimal persent5 = Math.Round((((decimal)Model.Grade.Five * 100) / nbrReviews), 2);}
-@{ decimal persent4 = Math.Round((((decimal)Model.Grade.Four * 100) / nbrReviews), 2);}
-@{ decimal persent3 = Math.Round((((decimal)Model.Grade.Three * 100) / nbrReviews), 2);}
-@{ decimal persent2 = Math.Round((((decimal)Model.Grade.Two * 100) / nbrReviews), 2);}
-@{ decimal persent1 = Math.Round((((decimal)Model.Grade.One * 100) / nbrReviews), 2);}
+@{ decimal persent5 = Math.Round((((decimal)Model.RestaurantModel.Grade.Five * 100) / nbrReviews), 2);}
+@{ decimal persent4 = Math.Round((((decimal)Model.RestaurantModel.Grade.Four * 100) / nbrReviews), 2);}
+@{ decimal persent3 = Math.Round((((decimal)Model.RestaurantModel.Grade.Three * 100) / nbrReviews), 2);}
+@{ decimal persent2 = Math.Round((((decimal)Model.RestaurantModel.Grade.Two * 100) / nbrReviews), 2);}
+@{ decimal persent1 = Math.Round((((decimal)Model.RestaurantModel.Grade.One * 100) / nbrReviews), 2);}
 @*<h2>Rounded Progress Bars</h2>
     <p>Use any of the <strong>w3-round</strong> classes to add rounded corners to progress bars:</p>*@
 <div class="w3-container" style="position:relative; width:70%;right:-30%;">
@@ -107,7 +107,7 @@
 
         </div>
         <div class="side right">
-            <div>@Model.Grade.Five</div>
+            <div>@Model.RestaurantModel.Grade.Five</div>
         </div>
     </div>
     <div class="row">
@@ -124,7 +124,7 @@
             </div>
         </div>
         <div class="side right">
-            <div>@Model.Grade.Four</div>
+            <div>@Model.RestaurantModel.Grade.Four</div>
         </div>
     </div>
     <div class="row">
@@ -140,7 +140,7 @@
             </div>
         </div>
         <div class="side right">
-            <div>@Model.Grade.Three</div>
+            <div>@Model.RestaurantModel.Grade.Three</div>
         </div>
     </div>
     <div class="row">
@@ -156,7 +156,7 @@
             </div>
         </div>
         <div class="side right">
-            <div>@Model.Grade.Two</div>
+            <div>@Model.RestaurantModel.Grade.Two</div>
         </div>
     </div>
     <div class="row">
@@ -172,7 +172,7 @@
             </div>
         </div>
         <div class="side right">
-            <div>@Model.Grade.One</div>
+            <div>@Model.RestaurantModel.Grade.One</div>
         </div>
     </div>
 </div>

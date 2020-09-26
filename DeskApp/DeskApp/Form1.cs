@@ -37,12 +37,19 @@ namespace DeskApp
             Login login = new Login(tbLoginUsername.Text, tbLoginPass.Text);
             Program.CurrentResturantOwner = Program.BackendConnectWithReturn<Login, RestaurantOwner>(login, Program.URL_LOGIN_PATH);
 
+            if (Program.CurrentResturantOwner.Username.Length <= 0)
+            {
+                MessageBox.Show("Pogrešno korisničko ime");
+            }
+            else
+            {
+                this.Hide();
+                Program.previousForm = this;
+                RestaurantOverview restaurantOverview = new RestaurantOverview();
+                restaurantOverview.Show();
+            }
             //MessageBox.Show("Ime = " + owner.Username);
             //MessageBox.Show("Ime = " + owner.Restaurant.Grade);
-            this.Hide();
-            Program.previousForm = this;
-            RestaurantOverview restaurantOverview = new RestaurantOverview();
-            restaurantOverview.Show();
 
         }
 
